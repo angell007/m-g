@@ -23,7 +23,7 @@ class ArrendatarioRepository implements RepositorioInterface
 
     public function all()
     {
-        return $this->model->get(['id', 'nombre', 'apellido', 'email', 'identificacion', 'tipo_identificacion', 'direccion', 'telefono', 'accept']);
+        return $this->model->get(['nombre', 'apellido', 'email', 'identificacion', 'tipo_identificacion', 'direccion', 'telefono','id' ]);
     }
 
     public function create(array $data)

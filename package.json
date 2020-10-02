@@ -13,6 +13,7 @@
         "axios": "^0.19.2",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
+        "fslightbox-vue": "^1.1.1",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
@@ -27,6 +28,10 @@
     },
     "dependencies": {
         "vee-validate": "^3.3.9",
+        "vue-gallery-slideshow": "^1.5.2",
+        "vue-image-lightbox": "^7.1.3",
+        "vue-lazyload": "^1.3.3",
+        "vue-router": "^3.4.3",
         "vuelidate": "^0.7.5",
         "vuetify": "^2.3.10",
         "vuex": "^3.5.1"

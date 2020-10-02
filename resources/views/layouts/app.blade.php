@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @include('layouts.head')
@@ -13,15 +13,15 @@
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-
-                @auth
-                @include('layouts.navbar')
-                @endauth
-                <div id="app">
-                    @include('layouts.main')
-                </div>
+                <v-app>
+                    <v-main>
+                        @auth
+                        @include('layouts.navbar')
+                        @endauth
+                        @include('layouts.main')
+                    </v-main>
+                </v-app>
             </div>
-
             @include('layouts.footer')
         </div>
     </div>

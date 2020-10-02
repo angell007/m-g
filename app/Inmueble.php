@@ -16,10 +16,9 @@ class Inmueble extends Model
         'proposito',
         'habitaciones',
         'canon',
-        'portada'
+        'portada',
+        'descripcion'
     ];
-
-
     public function propietario()
     {
         return $this->belongsTo(Propietario::class);

@@ -1,3 +1,4 @@
+import axios from 'axios'
 export default {
     data: () => ({
         dialog: false,
@@ -17,6 +18,8 @@ export default {
             { text: "Tipo", value: "tipo" },
             { text: "Actions", value: "actions", sortable: false },
         ],
+        propietarios: [],
+
         loading: true,
         search: "",
         mostrar: false,
@@ -45,6 +48,10 @@ export default {
             this.loading = false
             return this.$store.getters.getInmuebles;
         },
+
+        getPropietarios() {
+            return this.propietarios;
+        },
     },
 
     watch: {
@@ -55,6 +62,9 @@ export default {
 
     created() {
         this.getCambio();
+        axios.get("/api/propietarios").then((resp) => {
+            this.propietarios = resp.data;
+        });
     },
 
     methods: {
@@ -68,6 +78,8 @@ export default {
             this.dialog = true;
         },
 
+
+
         destroy(item) {
             const index = this.InmueblesAll.indexOf(item);
             confirm("Are you sure you want to delete this item?") &&
@@ -76,6 +88,14 @@ export default {
                     alert("Eliminado correcto");
                     this.getCambio();
                 });
+        },
+
+        ver(item) {
+            try {
+                window.location.href = `https://inmobiliaria.test/inmuebles/${item.id}`
+            } catch (error) {
+                console.log(error);
+            }
         },
 
         close() {
@@ -91,7 +111,7 @@ export default {
                 console.log([this.editedItem.id, this.editedIndex]);
                 try {
                     const response = await axios.patch(
-                        `https://inmobiliaria.test/Inmuebles/${this.editedItem.id}`,
+                        `https://inmobiliaria.test/api/inmuebles/${this.editedItem.id}`,
                         this.editedItem
                     );
                     this.getCambio();
@@ -101,7 +121,7 @@ export default {
             } else {
                 try {
                     const response = await axios.post(
-                        "https://inmobiliaria.test/Inmuebles",
+                        "https://inmobiliaria.test/api/inmuebles",
                         this.editedItem
                     );
                     this.getCambio();

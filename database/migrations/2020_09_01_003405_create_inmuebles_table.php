@@ -15,15 +15,22 @@ class CreateInmueblesTable extends Migration
     {
         Schema::create('inmuebles', function (Blueprint $table) {
             $table->id();
+            
             $table->string('ciudad');
+            $table->string('codigo')->nullable();
             $table->unsignedBigInteger('propietario_id');
             $table->string('departamento');
             $table->string('direccion');
             $table->enum('proposito', ['arrendamiento', 'venta']);
-            $table->string('canon')->nullable();
+            $table->decimal('canon', 20, 2)->nullable();
             $table->string('portada')->nullable();
             $table->string('habitaciones')->nullable();
-            $table->enum('tipo', ['apartaestudio', 'apartamento', 'casa', 'bodega']);
+            $table->decimal('precio', 20, 2)->nullable();
+            $table->text('descripcion')->nullable();
+            $table->enum('tipo', ['local', 'apartamento', 'casa', 'bodega']);
+            $table->string('baños')->nullable();
+            $table->string('parqueadero')->nullable();
+
             $table->timestamps();
         });
     }

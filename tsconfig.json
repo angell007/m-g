@@ -1,12 +1,14 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "strict": true,
+        "strict": false,
         "module": "es2015",
         "moduleResolution": "node",
         "experimentalDecorators": true,
+        "noImplicitAny": false,
+
     },
     "include": [
-        "resources/js/**/*"
+        "resources/js/**/*", "public/apis/arrendatario.js"
     ]
 }

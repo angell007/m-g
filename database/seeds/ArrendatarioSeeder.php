@@ -18,7 +18,7 @@ class ArrendatarioSeeder extends Seeder
                 'nombre' => $faker->name,
                 'apellido' => $faker->name,
                 'email' => $faker->email,
-                'identificacion' => $faker->randomNumber(5),
+                'identificacion' => $faker->randomNumber(5) . $faker->randomNumber(5),
                 'tipo_identificacion' => 'CC',
                 'ciudad' => $faker->city,
                 'departamento' => $faker->state,
@@ -26,7 +26,7 @@ class ArrendatarioSeeder extends Seeder
                 'barrio' => $faker->city,
                 'telefono' => $faker->phoneNumber,
                 'opcional_telefono' => $faker->phoneNumber,
-                'accept' => 'Activo',
+                'estado' => 'Activo',
             ));
         }
     }

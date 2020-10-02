@@ -23,7 +23,7 @@ class PropietarioRepository implements RepositorioInterface
 
     public function all()
     {
-        return $this->model->get(['*']);
+        return $this->model->get(['nombre', 'apellido', 'email', 'identificacion', 'tipo_identificacion', 'direccion', 'telefono','id' ]);
     }
 
     public function create(array $data)

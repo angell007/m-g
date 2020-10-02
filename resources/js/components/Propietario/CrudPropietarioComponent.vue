@@ -70,7 +70,7 @@
               </v-dialog>
             </v-row>
           </template>
-          <template v-slot:item[`actions`]="{ item }">
+          <template v-slot:item.actions="{ item }">
             <v-icon small class="mr-2" @click="edit(item)">mdi-pencil</v-icon>
             <v-icon small @click="destroy(item)">mdi-delete</v-icon>
           </template>

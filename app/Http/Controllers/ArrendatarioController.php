@@ -53,10 +53,10 @@ class ArrendatarioController extends Controller
         }
     }
 
-    public function update(ArrendatarioUpdateRequest $arrendatarioUpdateRequest, $id)
+    public function update(ArrendatarioUpdateRequest $arrendatarioUpdateRequest)
     {
         try {
-            if ($this->repository->update($arrendatarioUpdateRequest->all(), $id)) {
+            if ($this->repository->update($arrendatarioUpdateRequest->except(['_token', '_method']), $arrendatarioUpdateRequest->get('id'))) {
                 return response()->json(['error' =>  'Update Correcto', 'code' => 200], 200);
             }
             return response()->json(['error' =>  'Operacion no realizada. Posible error: Arrendatario no found', 'code' => 404], 404);

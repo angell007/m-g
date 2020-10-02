@@ -14,6 +14,8 @@ class PropietarioObserver
      */
     public function creating(Propietario $propietario)
     {
+        // dd('');
+        // var_dump('');
         $propietario->full_name = $propietario->nombre . ' ' . $propietario->apellido;
     }
 

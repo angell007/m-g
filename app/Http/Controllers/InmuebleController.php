@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InmuebleStoreRequest;
 use App\Http\Requests\InmuebleUpdateRequest;
+use App\Inmueble;
 use App\Repositories\InmuebleRepository;
 
 class InmuebleController extends Controller
@@ -16,59 +17,55 @@ class InmuebleController extends Controller
      *
      * @return void
      */
-    public function __construct(InmuebleRepository $propietarioRepository)
+    public function __construct(InmuebleRepository $InmuebleRepository)
     {
-        $this->repository = $propietarioRepository;
+        $this->repository = $InmuebleRepository;
     }
 
     public function index()
     {
-        // if (request()->ajax())  {
-        // if (request()->isJson()) {
-            // if ( request()->acceptsJson()) {
-            // if (request()->expectsJson()) {
-            if (request()->wantsJson()) {
+        if (request()->wantsJson()) {
             return response()->json($this->repository->all());
-        } 
-        // else {
-            return view('inmueble.index');
-        // }
-
-        // abort(404);
+        }
+        return view('inmueble.index');
     }
 
     public function show($id)
     {
-        try {
-            $propietario = $this->repository->find($id);
-            if (null == $propietario) {
-                return response()->json(['error' =>  'Inmueble no found', 'code' => 404], 404);
+        $inmueble = $this->repository->find($id);
+
+        if (request()->wantsJson()) {
+            try {
+                if (null == $inmueble) {
+                    return response()->json(['error' =>  'Inmueble no found', 'code' => 404], 404);
+                }
+                return response()->json(['data' =>  $inmueble, 'code' => 200], 200);
+            } catch (\Throwable $th) {
+                return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
             }
-            return response()->json(['data' =>  $propietario, 'code' => 200], 200);
+        }
+        return view('inmueble.show', compact('inmueble'));
+    }
+
+    public function store(InmuebleStoreRequest $InmuebleRequest)
+    {
+        try {
+            $Inmueble = $this->repository->Create($InmuebleRequest->all());
+            return response()->json(['data' => $Inmueble, 'code' => 200], 200);
         } catch (\Throwable $th) {
-            return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
+            return response()->json(['error' => $th->getMessage(), 'code' => 200], 200);
         }
     }
 
-    public function store(InmuebleStoreRequest $propietarioRequest)
+    public function update(InmuebleUpdateRequest $InmuebleUpdateRequest, $id)
     {
         try {
-            $propietario = $this->repository->Create($propietarioRequest->all());
-            return response()->json(['data' => $propietario, 'code' => 200], 200);
-        } catch (\Throwable $th) {
-            return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
-        }
-    }
-
-    public function update(InmuebleUpdateRequest $propietarioUpdateRequest, $id)
-    {
-        try {
-            if ($this->repository->update($propietarioUpdateRequest->all(), $id)) {
-                return response()->json(['error' =>  'Update Correcto', 'code' => 200], 200);
+            if ($this->repository->update($InmuebleUpdateRequest->except('propietario'), $id)) {
+                return response()->json(['data' => $this->repository->find($id),  'code' => 200], 200);
             }
             return response()->json(['error' =>  'Operacion no realizada. Posible error: Inmueble no found', 'code' => 404], 404);
         } catch (\Throwable $th) {
-            return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
+            return response()->json(['error' => $th->getMessage(), 'code' => 200], 200);
         }
     }
 
@@ -83,4 +80,30 @@ class InmuebleController extends Controller
             return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
         }
     }
+
+    public function uploadPortada()
+    {
+        if (request()->expectsJson()) {
+            try {
+                if (request()->file('image')) {
+                    $inmueble = Inmueble::find(request()->get('id'));
+                    $filename = '_' . time() . '.' . request()->file('image')->getClientOriginalExtension();
+                    request()->file('image')->move(public_path() . "/file", $filename);
+                    $inmueble->portada = $filename;
+                    $inmueble->save();
+                    return response()->json(['data' =>  $inmueble->portada, 'code' => 200], 200);
+                }
+                return response()->json(['error' => request()->file('image'), 'code' => 404], 404);
+            } catch (\Throwable $th) {
+                return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
+            }
+        }
+    }
+
+    // public function getGallery()
+    // {
+    //     if (request()->wantsJson()) {
+    //         return response()->json($this->repository->allGallery(request()->get('id')));
+    //     }
+    // }
 }

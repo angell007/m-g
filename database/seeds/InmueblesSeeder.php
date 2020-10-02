@@ -13,7 +13,7 @@ class InmueblesSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for ($i = 0; $i < 150; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             DB::table('inmuebles')->insert(array(
                 'ciudad' => $faker->city,
                 'departamento' => $faker->state,
@@ -21,8 +21,13 @@ class InmueblesSeeder extends Seeder
                 'propietario_id' => random_int(1, 50),
                 'proposito' => $faker->randomElement(['arrendamiento', 'venta']),
                 'canon' => $faker->randomFloat(),
-                'tipo' => $faker->randomElement(['apartaestudio', 'apartamento', 'casa', 'bodega']),
+                'precio' => $faker->randomFloat(),
+                'tipo' => $faker->randomElement(['local', 'apartamento', 'casa', 'bodega']),
                 'habitaciones' => random_int(0, 4),
+                'descripcion' => $faker->text(50),
+                'portada' => 'm' . random_int(1, 11) . '.jpg',
+                'parqueadero' => $faker->randomElement(['Si', 'No']),
+                'baños' => random_int(0, 4),
             ));
         }
     }

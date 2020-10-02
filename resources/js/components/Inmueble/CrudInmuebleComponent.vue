@@ -2,8 +2,6 @@
   <div>
     <v-app>
       <v-main>
-
-
         <v-data-table
           :headers="headers"
           :items="InmueblesAll"
@@ -11,7 +9,6 @@
           :loading="loading"
           color="secondary"
         >
-           
           <template v-slot:top>
             <v-toolbar flat color="white">
               <v-toolbar-title>Inmuebles</v-toolbar-title>
@@ -40,15 +37,26 @@
 
               <v-card>
                 <v-card-title>
-                  <span class="headline">{{ formTitle }}</span>
+                  <span class="headline">Nuevo</span>
                 </v-card-title>
 
                 <v-card-text>
                   <v-container>
                     <v-row justify="center">
                       <v-col cols="12" sm="6" md="6">
+                        <v-autocomplete
+                          :items="getPropietarios"
+                          item-text="nombre"
+                          item-value="id"
+                          v-model="editedItem.propietario_id"
+                          label="Propietario"
+                        ></v-autocomplete>
+                      </v-col>
+
+                      <v-col cols="12" sm="6" md="6">
                         <v-text-field autocomplete="off" v-model="editedItem.ciudad" label="Ciudad"></v-text-field>
                       </v-col>
+
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
                           autocomplete="off"
@@ -56,9 +64,43 @@
                           label="Departamento"
                         ></v-text-field>
                       </v-col>
+
+                      <v-col cols="12" sm="6" md="6">
+                        <v-text-field
+                          autocomplete="off"
+                          v-model="editedItem.direccion"
+                          label="Direccion"
+                        ></v-text-field>
+                      </v-col>
+
+                      <v-col cols="12" sm="6" md="6">
+                        <v-autocomplete
+                          :items="['arrendamiento', 'venta']"
+                          v-model="editedItem.proposito"
+                          label="Proposito"
+                        ></v-autocomplete>
+                      </v-col>
+
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field autocomplete="off" v-model="editedItem.canon" label="Canon"></v-text-field>
                       </v-col>
+
+                      <v-col cols="12" sm="6" md="6">
+                        <v-text-field
+                          autocomplete="off"
+                          v-model="editedItem.precio"
+                          label="Precio venta"
+                        ></v-text-field>
+                      </v-col>
+
+                      <v-col cols="12" sm="6" md="6">
+                        <v-autocomplete
+                          :items="['local', 'apartamento', 'casa', 'bodega']"
+                          v-model="editedItem.tipo"
+                          label="Tipo de Inmueble"
+                        ></v-autocomplete>
+                      </v-col>
+
                       <v-col cols="12" sm="6" md="6">
                         <v-text-field
                           autocomplete="off"
@@ -67,19 +109,9 @@
                           label="Habitaciones"
                         ></v-text-field>
                       </v-col>
+
                       <v-col cols="12" sm="6" md="6">
-                        <v-autocomplete
-                          :items="['arrendamiento', 'venta']"
-                          v-model="editedItem.proposito"
-                          label="Proposito"
-                        ></v-autocomplete>
-                      </v-col>
-                      <v-col cols="12" sm="6" md="6">
-                        <v-autocomplete
-                          :items="['apartaestudio', 'apartamento', 'casa', 'bodega']"
-                          v-model="editedItem.tipo"
-                          label="Tipo de Inmueble"
-                        ></v-autocomplete>
+                        <v-text-field v-model="editedItem.descripcion" label="Describe el inmueble"></v-text-field>
                       </v-col>
                     </v-row>
                   </v-container>
@@ -97,7 +129,8 @@
 
             <!-- </v-row> -->
           </template>
-          <template v-slot:item[`actions`]="{ item }">
+          <template v-slot:item.actions="{ item }">
+            <v-icon small class="mr-2" @click="ver(item)">mdi-eye</v-icon>
             <v-icon small class="mr-2" @click="edit(item)">mdi-pencil</v-icon>
             <v-icon small @click="destroy(item)">mdi-delete</v-icon>
           </template>

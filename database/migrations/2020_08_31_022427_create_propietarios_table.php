@@ -25,9 +25,9 @@ class CreatePropietariosTable extends Migration
             $table->string('departamento')->nullable();
             $table->string('direccion')->nullable();
             $table->string('barrio')->nullable();
-            $table->string('last')->nullable();
-            $table->string('accept')->nullable();
+            $table->string('estado')->nullable();
             $table->string('telefono')->nullable();
+            $table->string('cuenta')->nullable();
             $table->string('opcional_telefono')->nullable();
             $table->timestamps();
         });

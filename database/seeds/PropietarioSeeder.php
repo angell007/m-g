@@ -22,11 +22,12 @@ class PropietarioSeeder extends Seeder
                 'tipo_identificacion' => 'CC',
                 'ciudad' => $faker->city,
                 'departamento' => $faker->state,
+                'cuenta' => $faker->bankAccountNumber,
                 'direccion' => $faker->address,
                 'barrio' => $faker->city,
                 'telefono' => $faker->phoneNumber,
                 'opcional_telefono' => $faker->phoneNumber,
-                'accept' => 'Activo',
+                'estado' => 'Activo',
             ));
         }
     }

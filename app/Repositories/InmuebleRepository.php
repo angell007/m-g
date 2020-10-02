@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Inmueble;
 
 use App\InterfaceRepos\RepositorioInterface;
+use App\Propietario;
+use Illuminate\Database\Eloquent\Model;
 
 class InmuebleRepository implements RepositorioInterface
 {
@@ -14,29 +16,41 @@ class InmuebleRepository implements RepositorioInterface
     /**
      * InmuebleRepository constructor.
      *
-     * @param Inmueble $propietario
+     * @param Inmueble $inmueble
      */
-    public function __construct(Inmueble $propietario)
+    public function __construct(Inmueble $inmueble, PropietarioRepository $propietarioRepository)
     {
-        $this->model = $propietario;
+        $this->model = $inmueble;
     }
 
     public function all()
     {
-        // return $this->model->get(['*']);
-        return $this->model->with('propietario:id,nombre,apellido,full_name')->get(['*']);
 
+        return $this->model->with('propietario:id,nombre,apellido,full_name')->orderBy('id', 'Desc')->get([
+            'propietario_id',
+            'direccion',
+            'ciudad',
+            'departamento',
+            'tipo',
+            'proposito',
+            'habitaciones',
+            'canon',
+            'portada',
+            'descripcion',
+            'id'
+        ]);
     }
 
     public function create(array $data)
     {
+        $aux = Propietario::where('identificacion', $data['propietario_id'])->first();
+        $data['propietario_id'] = $aux->id;
         return $this->model->create($data);
     }
 
     public function update(array $data, $id)
     {
-        return $this->model->where('id', $id)
-            ->update($data);
+        return $this->model->find($id)->update($data);
     }
 
     public function delete($id)
@@ -46,7 +60,37 @@ class InmuebleRepository implements RepositorioInterface
 
     public function find($id)
     {
-        $propietario = $this->model->find($id);
-        return $propietario;
+        return $this->model->with('propietario')->find($id, [
+            'direccion',
+            'propietario_id',
+            'ciudad',
+            'departamento',
+            'tipo',
+            'proposito',
+            'habitaciones',
+            'canon',
+            'portada',
+            'id',
+            'descripcion',
+            'codigo',
+            'precio'
+        ]);
+    }
+
+    public function allGallery($id)
+    {
+        return $this->model->with('imagenes:id,nombre,apellido,full_name')->orderBy('id', 'Desc')->get([
+            'propietario_id',
+            'direccion',
+            'ciudad',
+            'departamento',
+            'tipo',
+            'proposito',
+            'habitaciones',
+            'canon',
+            'portada',
+            'descripcion',
+            'id'
+        ]);
     }
 }
