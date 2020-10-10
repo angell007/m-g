@@ -31,10 +31,10 @@
                     <thead class="thead">
                         <tr>
                            <th>Propietario</th>
+                           <th>Codigo</th>
                            <th>Direccion</th>
                            <th>Ciudad</th>
                            <th>Departamento</th>
-                           <th>Tipo</th>
                            <th>Proposito</th>
                            <th>Habitaciones</th>
                            <th>Canon</th>

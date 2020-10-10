@@ -6,7 +6,7 @@ const getPropietarios = async () => {
         allPropietarios = Object.values((await response).data)
         allPropietarios.forEach((propietario) => {
             let opt = `
-            <option value="${propietario.identificacion}">
+            <option value="${propietario.identificacion}"  data-value="${propietario.identificacion}">
             ${propietario.nombre}
             ${propietario.apellido}
             </option>`

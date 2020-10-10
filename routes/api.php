@@ -17,8 +17,14 @@ Route::group(['middleware' => ['cors', 'json']], function () {
     Route::resource('propietarios', 'PropietarioController', ['except' => 'update'])->names('propietarios');
     Route::patch('/propietarios/update', 'PropietarioController@update')->name('propietario.update');
     //Inmuebles
-    Route::resource('inmuebles', 'InmuebleController', ['except' =>[ 'update']])->names('inmuebles');
+    Route::resource('inmuebles', 'InmuebleController', ['except' => ['update']])->names('inmuebles');
     Route::patch('/inmuebles/update', 'InmuebleController@update')->name('inmueble.update');
+
+    //Contratos
+    Route::resource('contratos', 'ContratoController', ['except' => ['update']])->names('contratos');
+    Route::patch('/contratos/update', 'ContratoController@update')->name('contrato.update');
+    Route::get('inmueble/myg/details/{codigo}', 'GaleryController@show')->name('details');
+
 });
 
 //Users

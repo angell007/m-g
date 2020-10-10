@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content py-3">
 
-            <div class="card-header text-dark">Actualizar Inmueble
+            <div class="card-header text-dark">Actualizar Inmueble <span id="codigoUpdate"></span>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -17,75 +17,72 @@
 
                             <input type="hidden" name="id">
 
-                            <div class="form-group col-md-6">
-                                <label class="text-dark"> Nombres </label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="nombre" placeholder="Nombre">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Apellidos </label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="apellido" placeholder="Apellido">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Tipo de Identificación</label>
-                                <select class="form-control form-control-sm" required="required"
-                                    name="tipo_identificacion">
-                                    <option disabled selected> Selecciona...</option>
-                                    <option value="CC">CC</option>
-                                    <option value="Pasaporte">Pasaporte</option>
-                                    <option value="Nit">Nit</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark"># Identificacion</label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="identificacion" placeholder="1096216530">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Mail </label>
-                                <input type="text" class="form-control form-control-sm" required="required" name="email"
-                                    placeholder="E-mail">
-                            </div>
-
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Ciudad</label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="ciudad" placeholder="Ciudad">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Departamento</label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="departamento" placeholder="Departamento">
+                            <div class="form-group col-md-6 ">
+                                <label class=" text-dark">Propietario</label>
+                                <input class="form-control form-control-sm" list="propietario_id" autocomplete="off"
+                                    name="propietario_id" formControlName="propietario_id">
+                                <datalist class="col-md-6" style="width: 100%;" id="propietario_id"></datalist>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label class="text-dark">Dirección</label>
                                 <input type="text" class="form-control form-control-sm" required="required"
-                                    name="direccion" placeholder="Direccion">
+                                    name="direccion" tag="Direccion">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="text-dark">Barrio</label>
+                                <label class="text-dark">Ciudad</label>
                                 <input type="text" class="form-control form-control-sm" required="required"
-                                    name="barrio" placeholder="Barrio">
+                                    name="ciudad" tag="Ciudad">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="text-dark">Telefono</label>
-                                <input type="phone" class="form-control form-control-sm" required="required"
-                                    name="telefono" placeholder="Telefono">
+                                <label class="text-dark">Departamento</label>
+                                <input type="text" class="form-control form-control-sm" required="required"
+                                    name="departamento" tag="Departamento">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="text-dark">Telefono (opcional)</label>
-                                <input type="phone" class="form-control form-control-sm" name="opcional_telefono"
-                                    placeholder="Telefono ">
+                                <label class="text-dark">Tipo</label>
+                                <select class="form-control form-control-sm" required="required" name="tipo">
+                                    <option disabled selected> Selecciona...</option>
+                                    <option value="apartamento">Apartamento</option>
+                                    <option value="bodega">Bodega</option>
+                                    <option value="casa">Casa</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="text-dark">Proposito</label>
+                                <select class="form-control form-control-sm" required="required" name="proposito">
+                                    <option disabled selected> Selecciona...</option>
+                                    <option value="venta">Venta</option>
+                                    <option value="arrendamiento">Arrendamiento</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="text-dark">Habitaciones</label>
+                                <input type="number" class="form-control form-control-sm" required="required"
+                                    name="habitaciones">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="text-dark">Canon</label>
+                                <input type="currency" class="form-control form-control-sm" required="required"
+                                    name="canon">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="text-dark">Precio venta</label>
+                                <input type="currency" class="form-control form-control-sm" required="required"
+                                    name="precio">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label class="text-dark">Descripcion</label>
+                                <textarea class="form-control form-control-sm" name="descripcion" id=""
+                                    rows="3"></textarea>
                             </div>
 
                             <div class="form-group col-md-12">

@@ -11,6 +11,10 @@ class Inmueble extends Model
         'direccion',
         'propietario_id',
         'ciudad',
+        'barrio',
+        'amoblado',
+        'parqueadero',
+        'baños',
         'departamento',
         'tipo',
         'proposito',
@@ -22,5 +26,10 @@ class Inmueble extends Model
     public function propietario()
     {
         return $this->belongsTo(Propietario::class);
+    }
+
+    public function imagenes()
+    {
+        return $this->hasMany(Imagen::class);
     }
 }

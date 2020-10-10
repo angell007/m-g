@@ -10,7 +10,9 @@ class Imagen extends Model
         'path',
         'inmueble_id',
     ];
-    public function propietario()
+
+
+    public function inmueble()
     {
         return $this->belongsTo(Inmueble::class);
     }

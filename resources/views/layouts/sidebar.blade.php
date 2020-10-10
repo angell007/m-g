@@ -14,7 +14,7 @@
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-        Features
+
     </div>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
@@ -25,7 +25,7 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Gestion</h6>
-            <a class="collapse-item" href="{{route('arrendatarios.index')}}">Arrendatarios</a>
+                <a class="collapse-item" href="{{route('arrendatarios.index')}}">Arrendatarios</a>
                 <a class="collapse-item" href="{{route('propietarios.index')}}">Propietarios</a>
             </div>
         </div>
@@ -44,27 +44,36 @@
         </a>
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Tables</h6>
-                <a class="collapse-item" href="simple-tables.html">Simple Tables</a>
-                <a class="collapse-item" href="datatables.html">DataTables</a>
+                <h6 class="collapse-header"></h6>
+                <a class="collapse-item" href="{{route('contratos.index')}}">Contratos</a>
+                <a class="collapse-item" href="{{route('informes.arrendatarios')}}">Informe Arrendatarios</a>
+                <a class="collapse-item" href="datatables.html">Informe Inmuebles</a>
+                <a class="collapse-item" href="datatables.html">Informe Propietarios</a>
             </div>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="ui-colors.html">
-            <i class="fas fa-fw fa-palette"></i>
-            <span>Otros</span>
-        </a>
-    </li>
+
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-        Examples
+        Pendientes
     </div>
 
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Estadisticas</span>
+            <i class="fas fa-fw fa-user"></i>
+            <span>Arrendatarios</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Inmuebles</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Propietarios</span>
         </a>
     </li>
     <hr class="sidebar-divider">

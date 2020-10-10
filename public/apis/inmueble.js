@@ -88,7 +88,7 @@ async function ajaxFormUpdateInmuebles(event) {
         }
     })
 
-    document.getElementById("btnUpdateInmuebles").value = "Enviar";
+    document.getElementById("btnUpdateInmueble").value = "Enviar";
     btnUpdateInmuebles.disabled = false
 }
 
@@ -123,20 +123,22 @@ async function editarInmueble(ente_id) {
 
     const url = SITEURL + '/inmuebles/' + ente_id
     const modelEdit = await axios.get(url)
+
+
     switch (modelEdit.status) {
         case 200:
+            document.getElementById('codigoUpdate').innerText = modelEdit.data.data.codigo
             formInmuebleUpdate.id.value = modelEdit.data.data.id;
-            formInmuebleUpdate.nombre.value = modelEdit.data.data.nombre;
-            formInmuebleUpdate.apellido.value = modelEdit.data.data.apellido;
-            formInmuebleUpdate.email.value = modelEdit.data.data.email;
-            formInmuebleUpdate.tipo_identificacion.value = modelEdit.data.data.tipo_identificacion;
-            formInmuebleUpdate.identificacion.value = modelEdit.data.data.identificacion;
-            formInmuebleUpdate.direccion.value = modelEdit.data.data.direccion;
+            formInmuebleUpdate.canon.value = modelEdit.data.data.canon;
             formInmuebleUpdate.ciudad.value = modelEdit.data.data.ciudad;
             formInmuebleUpdate.departamento.value = modelEdit.data.data.departamento;
-            formInmuebleUpdate.barrio.value = modelEdit.data.data.barrio;
-            formInmuebleUpdate.telefono.value = modelEdit.data.data.telefono;
-            formInmuebleUpdate.opcional_telefono.value = modelEdit.data.data.opcional_telefono
+            formInmuebleUpdate.descripcion.value = modelEdit.data.data.descripcion;
+            formInmuebleUpdate.direccion.value = modelEdit.data.data.direccion;
+            formInmuebleUpdate.habitaciones.value = modelEdit.data.data.habitaciones;
+            formInmuebleUpdate.proposito.value = modelEdit.data.data.proposito;
+            formInmuebleUpdate.tipo.value = modelEdit.data.data.tipo;
+            formInmuebleUpdate.precio.value = modelEdit.data.data.precio;
+            formInmuebleUpdate.propietario_id.value = modelEdit.data.data.propietario['identificacion'];
             $('#modalInmuebleUpdate').modal('show')
             break;
         default:

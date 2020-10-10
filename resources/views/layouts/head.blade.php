@@ -1,5 +1,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Inmobiliaria M&G </title>
 
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +24,7 @@
     <link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css" />
 
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet" --}}
-        {{-- type="text/css" /> --}}
+    {{-- type="text/css" /> --}}
 
 
     <script>
@@ -58,18 +59,18 @@
         }
 
         [type="file"]+label:hover {
-            background-color: #77d30d;
+            background-color: #bdcf21;
         }
 
         [type="file"]+label.btn-1 {
-            background-color: #9ae736;
-            box-shadow: 0 6px #7af528;
+            background-color: #bdcf21;
+            box-shadow: 0 6px #bdcf21;
             -webkit-transition: none;
             transition: none;
         }
 
         [type="file"]+label.btn-1:hover {
-            box-shadow: 0 4px #7af528;
+            box-shadow: 0 4px #bdcf21;
             top: 2px;
         }
 
@@ -143,14 +144,6 @@
             top: 0;
         }
 
-        /* body {
-            font-family: 'Literata', serif;
-            font-size: 18px;
-            line-height: 1.3;
-            margin: 1rem 0;
-            text-align: center;
-        } */
-
         .wrapper {
             background-color: #fff;
             border-radius: 1rem;
@@ -159,30 +152,5 @@
             padding: 2rem;
             width: 100%;
         }
-
-        /* .footer {
-            font-size: .8rem;
-            margin-bottom: 0;
-            margin-top: 3rem;
-        } */
-
-        /* h1,
-        p {
-            margin-bottom: 2rem;
-        }
-
-        h1 {
-            font-family: 'Rubik', sans-serif;
-            font-size: 1.7rem;
-        }
-
-        a {
-            color: #31c1ef;
-            text-decoration: none;
-        }
-
-        .minh-100 {
-            height: 100vh;
-        } */
     </style>
 </head>

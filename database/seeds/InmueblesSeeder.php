@@ -27,6 +27,7 @@ class InmueblesSeeder extends Seeder
                 'descripcion' => $faker->text(50),
                 'portada' => 'm' . random_int(1, 11) . '.jpg',
                 'parqueadero' => $faker->randomElement(['Si', 'No']),
+                'codigo' => $faker->randomElement(["Bd-" . $i, "Apto-" . $i, "Lc-" . $i, "Cs-" . $i]),
                 'baños' => random_int(0, 4),
             ));
         }

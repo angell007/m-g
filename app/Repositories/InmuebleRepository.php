@@ -28,10 +28,10 @@ class InmuebleRepository implements RepositorioInterface
 
         return $this->model->with('propietario:id,nombre,apellido,full_name')->orderBy('id', 'Desc')->get([
             'propietario_id',
+            'codigo',
             'direccion',
             'ciudad',
             'departamento',
-            'tipo',
             'proposito',
             'habitaciones',
             'canon',
@@ -41,15 +41,15 @@ class InmuebleRepository implements RepositorioInterface
         ]);
     }
 
-    public function create(array $data)
+    public function create(array $req)
     {
-        $aux = Propietario::where('identificacion', $data['propietario_id'])->first();
-        $data['propietario_id'] = $aux->id;
+        $data = $this->getPropietario($req);
         return $this->model->create($data);
     }
 
-    public function update(array $data, $id)
+    public function update(array $req, $id)
     {
+        $data = $this->getPropietario($req);
         return $this->model->find($id)->update($data);
     }
 
@@ -77,20 +77,10 @@ class InmuebleRepository implements RepositorioInterface
         ]);
     }
 
-    public function allGallery($id)
+    public function getPropietario($data)
     {
-        return $this->model->with('imagenes:id,nombre,apellido,full_name')->orderBy('id', 'Desc')->get([
-            'propietario_id',
-            'direccion',
-            'ciudad',
-            'departamento',
-            'tipo',
-            'proposito',
-            'habitaciones',
-            'canon',
-            'portada',
-            'descripcion',
-            'id'
-        ]);
+        $aux = Propietario::where('identificacion', $data['propietario_id'])->first();
+        $data['propietario_id'] = $aux->id;
+        return $data;
     }
 }

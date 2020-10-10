@@ -57,11 +57,11 @@ class InmuebleController extends Controller
         }
     }
 
-    public function update(InmuebleUpdateRequest $InmuebleUpdateRequest, $id)
+    public function update(InmuebleUpdateRequest $InmuebleUpdateRequest)
     {
         try {
-            if ($this->repository->update($InmuebleUpdateRequest->except('propietario'), $id)) {
-                return response()->json(['data' => $this->repository->find($id),  'code' => 200], 200);
+            if ($this->repository->update($InmuebleUpdateRequest->all(), request()->get('id'))) {
+                return response()->json(['data' => $this->repository->find(request()->get('id')),  'code' => 200], 200);
             }
             return response()->json(['error' =>  'Operacion no realizada. Posible error: Inmueble no found', 'code' => 404], 404);
         } catch (\Throwable $th) {

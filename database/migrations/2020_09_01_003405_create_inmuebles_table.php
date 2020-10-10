@@ -25,6 +25,8 @@ class CreateInmueblesTable extends Migration
             $table->decimal('canon', 20, 2)->nullable();
             $table->string('portada')->nullable();
             $table->string('habitaciones')->nullable();
+            $table->string('barrio')->nullable();
+            $table->enum('amoblado', ['si', 'no'])->nullable();          
             $table->decimal('precio', 20, 2)->nullable();
             $table->text('descripcion')->nullable();
             $table->enum('tipo', ['local', 'apartamento', 'casa', 'bodega']);

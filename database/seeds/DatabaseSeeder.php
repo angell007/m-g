@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ArrendatarioSeeder::class);
         $this->call(PropietarioSeeder::class);
         $this->call(InmueblesSeeder::class);
+        $this->call(ContratoSeeder::class);
 
         User::create([
             'name' => 'Angell',

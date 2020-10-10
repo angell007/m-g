@@ -33,7 +33,7 @@
               <article class="p-5">
 
                 <h4 class="title mb-3 font-weight-bold text-secondary"> {{ strtoupper($inmueble['tipo']) }} </h4>
-                <small class="title mb-3">Cod : {{ $inmueble['codigo'] }} </small>
+                <small class=" mb-3">Cod : {{ $inmueble['codigo'] }} </small>
 
                 <div class="mb-3">
                   <var class="price h3 text-warning">
