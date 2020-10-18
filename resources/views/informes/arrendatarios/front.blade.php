@@ -4,24 +4,25 @@
 <!-- Row -->
 <div class="row">
 
-    <div class="ml-auto d-flex align-items-center secondary-menu text-center m-2">
-
-        <a href="javascript:history.back()" class="tooltip-wrapper btn-primary text-white rounded-circle p-2 mr-1" title=""
-            data-original-title="Regresar">
-            <i class="mr-2 fa fa-reply " aria-hidden="true"></i>
-        </a>
-
-    </div>
 
     <!-- DataTable with Hover -->
     <div class="col-lg-12">
         <div class="card mb-0 p-3">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="mr-2 font-weight-bold text-primary ">
-                    Arrendatarios: Informe entre fechas 
+                    <div class="ml-auto d-flex align-items-center secondary-menu text-center m-2">
+
+                        <a href="javascript:history.back()"
+                            class="tooltip-wrapper btn-success text-white rounded-circle p-2 mr-1" title=""
+                            data-original-title="Regresar">
+                            <i class="mr-2 fa fa-reply " aria-hidden="true"></i>
+                        </a>
+
+                        Arrendatarios: Informe entre fechas
+                    </div>
                 </h6>
             </div>
-            <form action="/services/informe/salida/" method="get">
+            <form action="{{route('informes.arrendatarios')}}" method="post">
                 <div class="row w-100">
                     @csrf
 
@@ -35,30 +36,19 @@
                     </div>
 
                     <div class="col-md-6">
-                        <select class="form-control" name="garantia" id="">
+                        <select class="form-control" name="filtro" id="">
                             <option value=null>No Aplicar</option>
-                            <option value="IW"> En Garantia </option>
-                            <option value="EW"> Garantia Extendida</option>
-                            <option value="OOW">Sin Garantia</option>
+                            <option value="registrados">Registrados</option>
+                            <option value="pendientes">Pendientes</option>
+                            <option value="saldados">Saldados</option>
                         </select>
                     </div>
 
-                    {{-- <div class="col-md-6">
-                        <select class="form-control" name="marca" id="">
-                            <option value=null>No Aplicar</option>
-                            @forelse ($marcas as $marca)
-                            <option value="{{$marca->id}}">{{$marca->nombre}}</option>
-                            @empty
-                            <option>Sin Marcas</option>
-                            @endforelse
-                        </select>
-                    </div> --}}
 
-                    {{-- <div class="row w-100 align-items-center mt-2"> --}}
                     <div class="col text-center mt-3">
                         <button type="submit" class="btn btn-primary text-white ">Filtrar</button>
                     </div>
-                    {{-- </div> --}}
+
                 </div>
             </form>
         </div>
@@ -68,5 +58,5 @@
 @stop
 
 @push('scripts')
-<script async src="{{ asset('/js/evalfecha.js') }}"></script>
+{{-- <script async src="{{ asset('/js/evalfecha.js') }}"></script> --}}
 @endpush

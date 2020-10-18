@@ -27,9 +27,9 @@ class ContratoRepository implements RepositorioInterface
     {
         return $this->model->with([
             'propietario:id,nombre,apellido,full_name',
-            'arrendatario:id,nombre,apellido,full_name',
+            'arrendatario:id,identificacion,nombre,apellido,full_name',
             'inmueble:id,codigo'
-        ])->orderBy('id', 'Desc')->get(['inmueble_id', 'propietario_id','arrendatario_id', 'inicio', 'fin', 'prorroga', 'observaciones', 'id']);
+        ])->orderBy('id', 'Desc')->get(['inmueble_id', 'propietario_id','arrendatario_id', 'codigo', 'inicio', 'fin', 'prorroga', 'observaciones', 'id']);
     }
 
     public function create(array $req)
@@ -41,7 +41,8 @@ class ContratoRepository implements RepositorioInterface
 
     public function update(array $req, $id)
     {
-        $data = $this->getPropietario($req);
+        $aux = $this->getArrendatario($req);
+        $data = $this->getInmueble($aux);
         return $this->model->find($id)->update($data);
     }
 
@@ -53,8 +54,8 @@ class ContratoRepository implements RepositorioInterface
     public function find($id)
     {
         return $this->model->with([
-            'propietario:id,nombre,apellido,full_name',
-            'arrendatario:id,nombre,apellido,full_name',
+            'propietario:id,identificacion,nombre,apellido,full_name',
+            'arrendatario:id,identificacion,nombre,apellido,full_name',
             'inmueble:id,codigo'
         ])->find($id, ['*']);
     }

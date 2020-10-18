@@ -15,8 +15,9 @@ class ContratoSeeder extends Seeder
 
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 20; $i++) {
-                DB::table('contratos')->insert(array(
+            DB::table('contratos')->insert(array(
                 'propietario_id' => random_int(1, 50),
+                'codigo' => 'myg-' . $i,
                 'arrendatario_id' => random_int(1, 50),
                 'inmueble_id' => random_int(1, 50),
                 'inicio' => $faker->date(),

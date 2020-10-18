@@ -13,10 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ArrendatarioSeeder::class);
-        $this->call(PropietarioSeeder::class);
-        $this->call(InmueblesSeeder::class);
-        $this->call(ContratoSeeder::class);
+        // $this->call(ArrendatarioSeeder::class);
+        // $this->call(PropietarioSeeder::class);
+        // $this->call(InmueblesSeeder::class);
+        // $this->call(ContratoSeeder::class);
+        // $this->call(DescuentoSeeder::class);
+        // $this->call(PagoRealizadoSeeder::class);
+        // $this->call(PagoRecibidoSeeder::class);
+        // $this->call(PendienteSeeder::class);
 
         User::create([
             'name' => 'Angell',

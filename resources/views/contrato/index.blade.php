@@ -32,6 +32,7 @@
                         <tr>
                             <th>Inmueble</th>
                             <th>Arrendatario</th>
+                            <th>Codigo</th>
                             <th>Fecha inicio</th>
                             <th>Fecha final</th>
                             <th>Prorrogado</th>
@@ -60,5 +61,4 @@
 <script src="{{ asset('/apis/getArrendatarios.js') }}"></script>
 <script src="{{ asset('/apis/getInmuebles.js') }}"></script>
 <script src="{{ asset('/apis/customContrato.js') }}"></script>
-{{-- <script src="{{ asset('/apis/getPropietarios.js') }}"></script> --}}
 @endpush

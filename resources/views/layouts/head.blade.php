@@ -17,11 +17,14 @@
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/ruang-admin.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/app.css')}}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css')}}" rel="stylesheet"> --}}
     <script src="{{asset('js/axios.min.js')}}"></script>
     <link href="{{asset('css/toastr.min.css')}}" rel="stylesheet" type="text/css" />
 
     <link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/panels.css')}}" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/currency.js@~2.0.0/dist/currency.min.js"></script>
+
 
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet" --}}
     {{-- type="text/css" /> --}}

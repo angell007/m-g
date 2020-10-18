@@ -1,48 +1,96 @@
-<div>
-    <table style="font-size: 0.8rem">
-        <thead class="">
-            <tr>
-                <th width="20px" style="width: 20px">Cod</th>
-                <th width="20px" style="width: 20px">Fecha ingreso</th>
-                <th width="20px" style="width: 20px">Fecha Reparado</th>
-                <th width="20px" style="width: 20px">Fecha Entrega</th>
-                <th width="20px" style="width: 20px">Modo Servicio</th>
-                <th width="20px" style="width: 20px">Tipo Servicio</th>
-                <th width="20px" style="width: 20px">Tipo producto</th>
-                <th width="20px" style="width: 20px">Marca</th>
-                <th width="20px" style="width: 20px">Modelo</th>
-                <th width="20px" style="width: 20px">Serie</th>
-                <th width="20px" style="width: 20px">Reporte Tecnico</th>
-                <th width="20px" style="width: 20px">Ubicacion</th>
-                <th width="20px" style="width: 20px">Dinero recibido</th>
-                <th width="20px" style="width: 20px">Valor autorizado</th>
-                <th width="20px" style="width: 20px">Dinero pendiente</th>
+<table style="font-size: 0.8rem">
+    <thead class="">
+        <tr>
+            <th style="width: 20px">Ingreso</th>
+            <th style="width: 20px">Nombre</th>
+            <th style="width: 20px">Apellido</th>
+            <th style="width: 20px">Email</th>
+            <th style="width: 20px">Identificacion</th>
+            <th style="width: 20px">Telefono</th>
+            <th style="width: 20px">Contrato</th>
+            <th style="width: 20px">Inmueble</th>
+            <th style="width: 20px">Canon</th>
+            <th style="width: 20px">Administracion</th>
+        </tr>
+    </thead>
+    <tbody style="background: #c4c4c4;">
+        @foreach ($arrendatarios as $arrendatario)
+        <tr>
 
+            <td style="word-wrap:break-word ; text-align:center;">{{$arrendatario->created_at}}</td>
+            <td style="word-wrap:break-word ; text-align:center;">{{$arrendatario->nombre}}</td>
+            <td style="word-wrap:break-word ; text-align:center;">{{$arrendatario->apellido}}</td>
+            <td style="word-wrap:break-word ; text-align:center;">{{$arrendatario->email}}</td>
+            <td style="word-wrap:break-word ; text-align:center;">
+                {{number_format($arrendatario->identificacion, '0','','.')}}</td>
+            <td style="word-wrap:break-word ; text-align:center;">{{$arrendatario->telefono}}</td>
+            <td style="word-wrap:break-word ; text-align:center;">
 
-            </tr>
-        </thead>
-        <tbody style="background: #c4c4c4;">
-            @if (isset($salidas))
-            @foreach ($salidas as $salida)
-            <tr style="background-color: #c4c4c4;">
-                <td style="word-wrap:break-word">{{'GA-'.$salida->id}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->fecha_inicio}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->fecha_reparado}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->fecha_finalizado}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->modo->nombre}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->tipo->nombre}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->equipo->producto->nombre}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->equipo->marka->nombre}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->equipo->modelo}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->equipo->serie}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->reporte}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->equipo->observacion}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->totalRecibido($salida->id)}}</td>
-                <td style="word-wrap:break-word">{{''.$salida->valor_cargo_cliente}}</td>
-                <td style="word-wrap:break-word">
-                    {{''.($salida->valor_cargo_cliente - $salida->totalRecibido($salida->id))}}</td>
+                @if (count($arrendatario->contratos) > 0)
+                @foreach ($arrendatario->contratos as $contrato)
+                <br style="mso-data-placement:same-cell; text-align:center;" />
+                {{$contrato['codigo']}}
                 @endforeach
                 @endif
-        </tbody>
-    </table>
-</div>
+
+            </td>
+            <td style="word-wrap:break-word ; text-align:center;">
+
+                @if (count($arrendatario->contratos) > 0)
+                @foreach ($arrendatario->contratos as $contrato)
+                <br style="mso-data-placement:same-cell; text-align:center;" />
+                {{$contrato['inmueble']['codigo']}}
+                @endforeach
+                @endif
+
+            </td>
+            <td style="word-wrap:break-word ; text-align:center;">
+
+                @if (count($arrendatario->contratos) > 0)
+                @foreach ($arrendatario->contratos as $contrato)
+                <br style="mso-data-placement:same-cell; text-align:center;" />
+                {{number_format($contrato['inmueble']['canon'], '2', ',', '.')}}
+                @endforeach
+                @endif
+
+            </td>
+
+            <td style="word-wrap:break-word ; text-align:center;">
+
+                @if (count($arrendatario->contratos) > 0)
+                @foreach ($arrendatario->contratos as $contrato)
+                <br style="mso-data-placement:same-cell; text-align:center;" />
+                {{number_format($contrato['inmueble']['administracion'], '2', ',', '.')}}
+                @endforeach
+                @endif
+
+            </td>
+
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
+{{-- td
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Verdana;
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:nowrap;
+	mso-rotate:0;} --}}

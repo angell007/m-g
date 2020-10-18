@@ -26,7 +26,7 @@ class InmuebleRepository implements RepositorioInterface
     public function all()
     {
 
-        return $this->model->with('propietario:id,nombre,apellido,full_name')->orderBy('id', 'Desc')->get([
+        return $this->model->with('propietario:id,nombre,apellido,identificacion,full_name')->orderBy('id', 'Desc')->get([
             'propietario_id',
             'codigo',
             'direccion',

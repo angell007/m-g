@@ -19,4 +19,13 @@ class Arrendatario extends Model
         'telefono',
         'opcional_telefono'
     ];
+
+    public function contratos()
+    {
+        return $this->hasMany(Contrato::class);
+    }
+    public function pago_recibidos()
+    {
+        return $this->hasMany(PagoRecibido::class);
+    }
 }

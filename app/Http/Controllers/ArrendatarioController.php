@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Arrendatario;
 use App\Http\Requests\ArrendatarioStoreRequest;
 use App\Http\Requests\ArrendatarioUpdateRequest;
 use App\Repositories\ArrendatarioRepository;
@@ -72,6 +73,16 @@ class ArrendatarioController extends Controller
                 return response()->json(['data' =>  'Eliminado Correcto', 'code' => 200], 200);
             }
             return response()->json(['error' =>  'Operacion no realizada. Posible error: Arrendatario no found', 'code' => 404], 404);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
+        }
+    }
+
+    public function search()
+    {
+        try {
+            return response()
+                ->json(['data' => Arrendatario::with('contratos', 'contratos.inmueble')->where('identificacion', request()->get('identificacion'))->first(), 'code' => 200], 200);
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
         }

@@ -20,4 +20,8 @@ class Propietario extends Model
         'opcional_telefono'
     ];
 
+    public function contratos()
+    {
+        return $this->hasMany(Contrato::class);
+    }
 }

@@ -10,6 +10,7 @@ class Contrato extends Model
         'propietario_id',
         'arrendatario_id',
         'inmueble_id',
+        'codigo',
         'inicio',
         'fin',
         'prorroga',
@@ -29,5 +30,20 @@ class Contrato extends Model
     public function inmueble()
     {
         return $this->belongsTo(Inmueble::class);
+    }
+
+    public function descuentos()
+    {
+        return $this->hasMany(Descuento::class);
+    }
+
+    public function pago_recibidos()
+    {
+        return $this->hasMany(PagoRecibido::class);
+    }
+
+    public function pago_realizados()
+    {
+        return $this->hasMany(PagoRealizado::class);
     }
 }

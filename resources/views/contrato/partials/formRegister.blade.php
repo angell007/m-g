@@ -14,13 +14,6 @@
                     <div class="modal-body">
                         <div class="row">
 
-                            {{-- <div class="form-group col-md-6 ">
-                                <label class=" text-dark">Propietario</label>
-                                <input class="form-control form-control-sm" list="propietario_id" autocomplete="off"
-                                    name="propietario_id" formControlName="propietario_id">
-                                <datalist class="col-md-6" style="width: 100%;" id="propietario_id"></datalist>
-                            </div> --}}
-
                             <div class="form-group col-md-6 ">
                                 <label class=" text-dark">Arrendatarios</label>
                                 <input class="form-control form-control-sm" list="arrendatario_id" autocomplete="off"
@@ -65,8 +58,8 @@
                                 data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 </div>

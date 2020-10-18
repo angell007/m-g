@@ -21,6 +21,7 @@ class CreateContratosTable extends Migration
             $table->date('inicio');
             $table->date('fin');
             $table->string('prorroga')->nullable();
+            $table->string('codigo')->nullable();
             $table->string('observaciones')->nullable();
 
 

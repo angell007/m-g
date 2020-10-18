@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PropietarioStoreRequest;
 use App\Http\Requests\PropietarioUpdateRequest;
+use App\Propietario;
 use App\Repositories\PropietarioRepository;
 
 class PropietarioController extends Controller
@@ -71,6 +72,16 @@ class PropietarioController extends Controller
                 return response()->json(['data' =>  'Eliminado Correcto', 'code' => 200], 200);
             }
             return response()->json(['error' =>  'Operacion no realizada. Posible error: Propietario no found', 'code' => 404], 404);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
+        }
+    }
+
+    public function search()
+    {
+        try {
+            return response()
+                ->json(['data' => Propietario::with('contratos', 'contratos.inmueble')->where('identificacion', request()->get('identificacion'))->first(), 'code' => 200], 200);
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
         }

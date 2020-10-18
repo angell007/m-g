@@ -1,31 +1,57 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
+if (Cache::get('user') != null) {
+    Route::group(['middleware' => ['cors', 'json']], function () {
 
-Route::group(['middleware' => ['cors', 'json']], function () {
-    // Route::resource('inmuebles', 'InmuebleController')->names('inmuebles');
-    Route::post('upload-portada-inmueble', 'InmuebleController@uploadPortada')->name('upload.portada');
-    Route::get('imagenes/{id}', 'ImagenController@show');
-    Route::post('imagenes', 'ImagenController@store')->name('imagenes.store');
-    // Route::post('imagenes', 'InmuebleController@uploadPortada');
-    //Arrendatarios
-    Route::resource('arrendatarios', 'ArrendatarioController', ['except' => 'update'])->names('arrendatarios');
-    Route::patch('/arrendatarios/update', 'ArrendatarioController@update')->name('arrendatario.update');
-    //Propietarios
-    Route::resource('propietarios', 'PropietarioController', ['except' => 'update'])->names('propietarios');
-    Route::patch('/propietarios/update', 'PropietarioController@update')->name('propietario.update');
-    //Inmuebles
-    Route::resource('inmuebles', 'InmuebleController', ['except' => ['update']])->names('inmuebles');
-    Route::patch('/inmuebles/update', 'InmuebleController@update')->name('inmueble.update');
+        Route::post('upload-portada-inmueble', 'InmuebleController@uploadPortada')->name('upload.portada');
+        Route::get('imagenes/{id}', 'ImagenController@show');
+        Route::post('imagenes', 'ImagenController@store')->name('imagenes.store');
+        //Arrendatarios
+        Route::resource('arrendatarios', 'ArrendatarioController', ['except' => 'update'])->names('arrendatarios');
+        Route::patch('/arrendatarios/update', 'ArrendatarioController@update')->name('arrendatario.update');
+        //Propietarios
+        Route::resource('propietarios', 'PropietarioController', ['except' => 'update'])->names('propietarios');
+        Route::patch('/propietarios/update', 'PropietarioController@update')->name('propietario.update');
 
-    //Contratos
-    Route::resource('contratos', 'ContratoController', ['except' => ['update']])->names('contratos');
-    Route::patch('/contratos/update', 'ContratoController@update')->name('contrato.update');
-    Route::get('inmueble/myg/details/{codigo}', 'GaleryController@show')->name('details');
 
-});
+        Route::post('/propietarios/search', 'PropietarioController@search');
+        Route::post('/arrendatarios/search', 'ArrendatarioController@search');
+
+        //Inmuebles
+        Route::resource('inmuebles', 'InmuebleController', ['except' => ['update']])->names('inmuebles');
+        Route::patch('/inmuebles/update', 'InmuebleController@update')->name('inmueble.update');
+
+        //Contratos
+        Route::resource('contratos', 'ContratoController', ['except' => ['update']])->names('contratos');
+        Route::patch('/contratos/update', 'ContratoController@update')->name('contrato.update');
+
+        Route::get('contrato/myg/details/{id}', 'ContratoController@show');
+
+        Route::get('descuentos/myg/details/{id}', 'DescuentoController@searchInContract');
+
+        Route::get('descuentos/myg/details/{id}', 'DescuentoController@searchInContract');
+        Route::get('recibidos/myg/details/{id}', 'PagoRecibidoController@searchInContract');
+        Route::get('realizados/myg/details/{id}', 'PagoRealizadoController@searchInContract');
+        Route::get('pendientes/myg/details/{id}', 'PendienteController@searchInContract');
+
+        //Pagos
+        Route::post('contrato/myg/getInfo', 'ContratoController@getDataForPago');
+        Route::post('contrato/myg/getInfoDescuentos', 'ContratoController@getDataForDescuento');
+        Route::resource('realizados', 'PagoRealizadoController')->names('realizados');
+        Route::resource('recibidos', 'PagoRecibidoController')->names('recibidos');
+
+        Route::resource('descuentos', 'DescuentoController')->names('descuentos');
+        Route::resource('pendientes', 'PendienteController')->names('pendientes');
+        Route::patch('/pendientes/update', 'PendienteController@update')->name('pendiente.update');
+    });
+}
+
+Route::get('inmueble/myg/details/{codigo}', 'GaleryController@show')->name('details');
+
 
 //Users
 // Route::resource('/users', 'UserController', ['except' => 'update']);

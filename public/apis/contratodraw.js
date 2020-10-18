@@ -1,5 +1,5 @@
 const drawTable = async (models, $body, entidad) => {
-    
+
     models.forEach((model) => {
 
         const $tr = document.createElement("tr");
@@ -32,26 +32,26 @@ const drawTable = async (models, $body, entidad) => {
                 $tr.appendChild($cell);
             }
 
-            // if (key == 'id') {
-            //     let $cell = document.createElement("td");
-            //     $cell.innerHTML = `
-            //     <a style="font-size:0.8em; margin: 1px" class="btn rounded-circle btn-sm btn-primary text-white tooltip-wrapper"
-            //     href="javascript:void(0)" onclick="editar${entidad}(${model[key]})"
-            //     title="Editar">
-            //     <i class="fa fa-fw fa-edit"></i>
-            //     </a><a style="font-size:0.8em; margin: 1px" class="btn rounded-circle btn-sm btn-danger text-white tooltip-wrapper" 
-            //     href="javascript:void(0)" onclick="eliminar${entidad}(${model[key]})"
-            //     title="Eliminar">
-            //     <i class="fa fa-fw fa-trash" aria-hidden="true"></i>
-            //     </a>
-            //     </a><a style="font-size:0.8em; margin: 1px" class="btn rounded-circle btn-sm btn-info text-white tooltip-wrapper" 
-            //     href="/inmuebles/${model[key]}"
-            //     title="Detalles">
-            //     <i class="fa fa-fw fa-eye" aria-hidden="true"></i>
-            //     </a>`
+            if (key == 'id') {
+                let $cell = document.createElement("td");
+                $cell.innerHTML = `
+                <a style="font-size:0.8em; margin: 1px" class="btn rounded-circle btn-sm btn-primary text-white tooltip-wrapper"
+                href="javascript:void(0)" onclick="editar${entidad}(${model[key]})"
+                title="Editar">
+                <i class="fa fa-fw fa-edit"></i>
+                </a><a style="font-size:0.8em; margin: 1px" class="btn rounded-circle btn-sm btn-danger text-white tooltip-wrapper" 
+                href="javascript:void(0)" onclick="eliminar${entidad}(${model[key]})"
+                title="Eliminar">
+                <i class="fa fa-fw fa-trash" aria-hidden="true"></i>
+                </a>
+                </a><a style="font-size:0.8em; margin: 1px" class="btn rounded-circle btn-sm btn-info text-white tooltip-wrapper" 
+                href="/contratos/myg/details/${model[key]}"
+                title="Detalles">
+                <i class="fa fa-fw fa-eye" aria-hidden="true"></i>
+                </a>`
 
-            //     $tr.appendChild($cell);
-            // }
+                $tr.appendChild($cell);
+            }
         })
 
         $body.appendChild($tr);

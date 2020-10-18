@@ -47,8 +47,9 @@
                 <h6 class="collapse-header"></h6>
                 <a class="collapse-item" href="{{route('contratos.index')}}">Contratos</a>
                 <a class="collapse-item" href="{{route('informes.arrendatarios')}}">Informe Arrendatarios</a>
-                <a class="collapse-item" href="datatables.html">Informe Inmuebles</a>
-                <a class="collapse-item" href="datatables.html">Informe Propietarios</a>
+                <a class="collapse-item" href="{{route('informes.propietarios')}}">Informe Propietarios</a>
+                {{-- <a class="collapse-item" href="datatables.html">Informe Inmuebles</a> --}}
+                {{-- <a class="collapse-item" href="datatables.html">Informe Propietarios</a> --}}
             </div>
         </div>
     </li>
@@ -59,23 +60,46 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Arrendatarios</span>
+        <a class="nav-link" href="{{route('registro.pendientes')}}">
+            <i class="fa fa-pen"></i>
+            <span class="text-center">
+                Gestión de tareas
+            </span>
         </a>
     </li>
+
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+        Cartera
+    </div>
+
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-home"></i>
-            <span>Inmuebles</span>
+        <a class="nav-link" href="{{route('registro.realizados')}}">
+            <i class="fas fa-info" aria-hidden="true"></i>
+            <span class="text-center">
+                Registro pagos realizados
+            </span>
         </a>
     </li>
+
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Propietarios</span>
+        <a class="nav-link" href="{{route('registro.recibidos')}}">
+            <i class="fas fa-info" aria-hidden="true"></i>
+            <span class="text-center">
+                Registro pagos recibidos
+            </span>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('registro.descuentos')}}">
+        <i class="fas fa-info" aria-hidden="true"></i>
+        <span class="text-center">
+            Registro descuentos
+        </span>
+        </a>
+    </li>
+
     <hr class="sidebar-divider">
     <div class="version" id="version-ruangadmin"></div>
 </ul>

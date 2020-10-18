@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Contrato;
 use App\Http\Requests\ContratoStoreRequest;
 use App\Http\Requests\ContratoUpdateRequest;
 use App\Repositories\ContratoRepository;
+use Carbon\Carbon;
 
 class ContratoController extends Controller
 {
@@ -31,16 +33,31 @@ class ContratoController extends Controller
 
     public function show($id)
     {
-        try {
-            $contrato = $this->repository->find($id);
-            if (null == $contrato) {
-                return response()->json(['error' =>  'Contrato no found', 'code' => 404], 404);
+        $contrato = $this->repository->find($id);
+
+        if (request()->wantsJson()) {
+            try {
+                if (null == $contrato) {
+                    return response()->json(['error' =>  'Contrato no found', 'code' => 404], 404);
+                }
+                return response()->json(['data' =>  $contrato, 'code' => 200], 200);
+            } catch (\Throwable $th) {
+                return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
             }
-            return response()->json(['data' =>  $contrato, 'code' => 200], 200);
-        } catch (\Throwable $th) {
-            return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
         }
+        return view('contrato.show', compact('contrato'));
     }
+
+    // try {
+    //     $contrato = $this->repository->find($id);
+    //     if (null == $contrato) {
+    //         return response()->json(['error' =>  'Contrato no found', 'code' => 404], 404);
+    //     }
+    //     return response()->json(['data' =>  $contrato, 'code' => 200], 200);
+    // } catch (\Throwable $th) {
+    //     return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
+    // }
+
 
     public function store(ContratoStoreRequest $contratoRequest)
     {
@@ -52,10 +69,10 @@ class ContratoController extends Controller
         }
     }
 
-    public function update(ContratoUpdateRequest $contratoUpdateRequest, $id)
+    public function update(ContratoUpdateRequest $contratoUpdateRequest)
     {
         try {
-            if ($this->repository->update($contratoUpdateRequest->all(), $id)) {
+            if ($this->repository->update($contratoUpdateRequest->all(), request()->get('id'))) {
                 return response()->json(['error' =>  'Update Correcto', 'code' => 200], 200);
             }
             return response()->json(['error' =>  'Operacion no realizada. Posible error: Contrato no found', 'code' => 404], 404);
@@ -71,6 +88,34 @@ class ContratoController extends Controller
                 return response()->json(['data' =>  'Eliminado Correcto', 'code' => 200], 200);
             }
             return response()->json(['error' =>  'Operacion no realizada. Posible error: Contrato no found', 'code' => 404], 404);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
+        }
+    }
+
+    public function getDataForPago()
+    {
+        try {
+            $contrato = Contrato::with([
+                'descuentos' => function ($query) {
+                    $query->whereBetween('fecha', [Carbon::createFromDate(request()->get('min')), Carbon::createFromDate(request()->get('max'))]);
+                },
+                'inmueble'
+            ])->find(request()->get('codigo'));
+            return response()->json(['data' =>  $contrato, 'code' => 200], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
+        }
+    }
+
+    public function getDataForDescuento()
+    {
+        try {
+            $contrato = Contrato::with([
+                'descuentos',
+                'inmueble'
+            ])->find(request()->get('codigo'));
+            return response()->json(['data' =>  $contrato, 'code' => 200], 200);
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
         }

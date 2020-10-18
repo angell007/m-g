@@ -1,5 +1,4 @@
-<div class="modal fade " tabindex="-1" role="dialog" data-backdrop="static" data-ajax-modal
-    id="modalContratoUpdate">
+<div class="modal fade " tabindex="-1" role="dialog" data-backdrop="static" data-ajax-modal id="modalContratoUpdate">
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content py-3">
 
@@ -16,88 +15,56 @@
                     @method('PATCH')
 
                     <div class="modal-body">
+
+                        <input type="hidden" name="id">
+                        
                         <div class="row">
 
-                            <input type="hidden" name="id">
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark"> Nombres </label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="nombre" placeholder="Nombre">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Apellidos </label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="apellido" placeholder="Apellido">
+                            <div class="form-group col-md-6 ">
+                                <label class=" text-dark">Arrendatarios</label>
+                                <input class="form-control form-control-sm" list="arrendatario_id" autocomplete="off"
+                                    name="arrendatario_id" formControlName="arrendatario_id">
+                                <datalist class="col-md-6" style="width: 100%;" id="arrendatario_id"></datalist>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Tipo de Identificación</label>
-                                <select class="form-control form-control-sm" required="required"
-                                    name="tipo_identificacion">
-                                    <option disabled selected> Selecciona...</option>
-                                    <option value="CC">CC</option>
-                                    <option value="Pasaporte">Pasaporte</option>
-                                    <option value="Nit">Nit</option>
-                                </select>
+                            <div class="form-group col-md-6 ">
+                                <label class=" text-dark">Inmuebles</label>
+                                <input class="form-control form-control-sm" list="inmueble_id" id="customID"
+                                    autocomplete="off" name="inmueble_id" formControlName="inmueble_id">
+                                <datalist class="col-md-6" style="width: 100%;" id="inmueble_id"></datalist>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label class="text-dark"># Identificacion</label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="identificacion" placeholder="1096216530">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Mail </label>
-                                <input type="text" class="form-control form-control-sm" required="required" name="email"
-                                    placeholder="E-mail">
+                            <div class="form-group col-md-12 ">
+                                <label class=" text-dark">Canon</label>
+                                <input type="number" disabled id="canon" class="form-control form-control-sm"
+                                    placeholder="canon ">
                             </div>
 
 
                             <div class="form-group col-md-6">
-                                <label class="text-dark">Ciudad</label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="ciudad" placeholder="Ciudad">
+                                <label class="text-dark">Inicio de Contrato </label>
+                                <input type="date" class="form-control form-control-sm" name="inicio">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label class="text-dark">Departamento</label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="departamento" placeholder="Departamento">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Dirección</label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="direccion" placeholder="Direccion">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Barrio</label>
-                                <input type="text" class="form-control form-control-sm" required="required"
-                                    name="barrio" placeholder="Barrio">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Telefono</label>
-                                <input type="phone" class="form-control form-control-sm" required="required"
-                                    name="telefono" placeholder="Telefono">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label class="text-dark">Telefono (opcional)</label>
-                                <input type="phone" class="form-control form-control-sm" name="opcional_telefono"
-                                    placeholder="Telefono ">
+                                <label class="text-dark">Final de contrato</label>
+                                <input type="date" class="form-control form-control-sm" name="fin">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <input type="submit" class="btn btn-outline-info  btn-sm " id="btnUpdateContrato"
-                                    value="Enviar">
-                                <button type="button" class="btn btn-outline-dark btn-sm "
-                                    data-dismiss="modal">Cancel</button>
+                                <label class="text-dark">Observaciones</label>
+                                <textarea class="form-control form-control-sm" name="observaciones" rows="3"></textarea>
                             </div>
+
                         </div>
+
+                        <div class="form-group col-md-12">
+                            <input type="submit" class="btn btn-outline-info  btn-sm " id="btnUpdateContrato"
+                                value="Enviar">
+                            <button type="button" class="btn btn-outline-dark btn-sm "
+                                data-dismiss="modal">Cancel</button>
+                        </div>
+
                     </div>
                 </form>
             </div>

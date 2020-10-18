@@ -127,18 +127,16 @@ async function editarContrato(ente_id) {
     const modelEdit = await axios.get(url)
     switch (modelEdit.status) {
         case 200:
-            // formContratoUpdate.id.value = modelEdit.data.data.id;
-            // formContratoUpdate.nombre.value = modelEdit.data.data.nombre;
-            // formContratoUpdate.apellido.value = modelEdit.data.data.apellido;
-            // formContratoUpdate.email.value = modelEdit.data.data.email;
-            // formContratoUpdate.tipo_identificacion.value = modelEdit.data.data.tipo_identificacion;
-            // formContratoUpdate.identificacion.value = modelEdit.data.data.identificacion;
-            // formContratoUpdate.direccion.value = modelEdit.data.data.direccion;
-            // formContratoUpdate.ciudad.value = modelEdit.data.data.ciudad;
-            // formContratoUpdate.departamento.value = modelEdit.data.data.departamento;
-            // formContratoUpdate.barrio.value = modelEdit.data.data.barrio;
-            // formContratoUpdate.telefono.value = modelEdit.data.data.telefono;
-            // formContratoUpdate.opcional_telefono.value = modelEdit.data.data.opcional_telefono
+
+            console.log(modelEdit.data);
+
+            formContratoUpdate.id.value = modelEdit.data.data.id;
+            formContratoUpdate.observaciones.value = modelEdit.data.data.observaciones;
+            formContratoUpdate.fin.value = modelEdit.data.data.fin;
+            formContratoUpdate.inicio.value = modelEdit.data.data.inicio;
+            formContratoUpdate.inmueble_id.value = modelEdit.data.data.inmueble.codigo;
+            formContratoUpdate.arrendatario_id.value = modelEdit.data.data.arrendatario.identificacion;
+
             $('#modalContratoUpdate').modal('show')
             break;
         default:
