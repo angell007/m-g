@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 if (Cache::get('user') != null) {
     Route::group(['middleware' => ['cors', 'json']], function () {
 
+        Route::get('delete-img/{id}', 'ImagenController@destroy');
+
         Route::post('upload-portada-inmueble', 'InmuebleController@uploadPortada')->name('upload.portada');
         Route::get('imagenes/{id}', 'ImagenController@show');
         Route::post('imagenes', 'ImagenController@store')->name('imagenes.store');
@@ -16,14 +18,17 @@ if (Cache::get('user') != null) {
         //Propietarios
         Route::resource('propietarios', 'PropietarioController', ['except' => 'update'])->names('propietarios');
         Route::patch('/propietarios/update', 'PropietarioController@update')->name('propietario.update');
+        Route::post('/propietarios/filtrado', 'PropietarioController@filtrado');
 
 
         Route::post('/propietarios/search', 'PropietarioController@search');
         Route::post('/arrendatarios/search', 'ArrendatarioController@search');
+        Route::post('/arrendatarios/filtrado', 'ArrendatarioController@filtrado');
 
         //Inmuebles
         Route::resource('inmuebles', 'InmuebleController', ['except' => ['update']])->names('inmuebles');
         Route::patch('/inmuebles/update', 'InmuebleController@update')->name('inmueble.update');
+        Route::post('/inmuebles/filtrado', 'InmuebleController@filtrado');
 
         //Contratos
         Route::resource('contratos', 'ContratoController', ['except' => ['update']])->names('contratos');
@@ -45,12 +50,15 @@ if (Cache::get('user') != null) {
         Route::resource('recibidos', 'PagoRecibidoController')->names('recibidos');
 
         Route::resource('descuentos', 'DescuentoController')->names('descuentos');
-        Route::resource('pendientes', 'PendienteController')->names('pendientes');
         Route::patch('/pendientes/update', 'PendienteController@update')->name('pendiente.update');
     });
 }
 
 Route::get('inmueble/myg/details/{codigo}', 'GaleryController@show')->name('details');
+Route::resource('pendientes', 'PendienteController')->names('pendientes');
+
+Route::get('search/{codigo}', 'InmuebleController@search');
+
 
 
 //Users

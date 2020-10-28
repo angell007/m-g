@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Contrato;
+use App\Propietario;
 
 class ContratoObserver
 {
@@ -15,6 +16,8 @@ class ContratoObserver
     public function created(Contrato $contrato)
     {
         $contrato->codigo = 'myg-' . $contrato->id;
+        $propietario = Contrato::with('inmueble')->where('id', $contrato->id)->first();
+        $contrato->propietario_id =  $propietario['inmueble']->propietario_id;
         $contrato->save();
     }
 

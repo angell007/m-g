@@ -8,20 +8,25 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Inmueble extends Model
 {
     protected $fillable = [
-        'direccion',
-        'propietario_id',
         'ciudad',
-        'barrio',
-        'amoblado',
-        'parqueadero',
-        'baños',
+        'codigo',
+        'propietario_id',
         'departamento',
-        'tipo',
+        'direccion',
         'proposito',
-        'habitaciones',
         'canon',
         'portada',
-        'descripcion'
+        'habitaciones',
+        'barrio',
+        'amoblado',
+        'precio',
+        'administracion',
+        'comision',
+        'descripcion',
+        'tipo',
+        'baños',
+        'parqueadero',
+        'estado',
     ];
     public function propietario()
     {

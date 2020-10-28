@@ -20,6 +20,8 @@ class CreatePagoRealizadosTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('contrato_id');
             $table->date('fecha');
+            $table->date('desde');
+            $table->date('hasta');
             $table->decimal('otros', 20, 2)->nullable();
             $table->decimal('totalCreditos', 20, 2)->nullable();
             $table->decimal('totalDebitos', 20, 2)->nullable();

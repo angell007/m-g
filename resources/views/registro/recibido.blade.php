@@ -49,8 +49,8 @@
 
                 <div class="form-group" id="filtrarContrato">
                     <div class="form-group mx-auto">
-                            Acción
-                            <div class="w-100"></div>
+                        Acción
+                        <div class="w-100"></div>
                         <input type="submit" class="btn btn-outline-info btn-sm" id="btngetData" value="Obtener datos">
                     </div>
                 </div>
@@ -62,6 +62,15 @@
             action="{{route('recibidos.store')}}">
             @csrf
         </form>
+
+        <form class="form-row text-left col-md-12" id="formPrint" method="Post" action="{{route('print.realizado')}}">
+            @csrf
+            <input type="hidden" name="id" id="idToPrint">
+            <input type="submit" class="btn btn-outline-info btn-sm" id="btnPrint" style="display: none"
+                value="Imprimir Recibo">
+        </form>
+
+        <div class="row card my-2" id="drawTickest"></div>
 
     </div>
 </div>

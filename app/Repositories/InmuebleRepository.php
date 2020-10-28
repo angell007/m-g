@@ -36,7 +36,7 @@ class InmuebleRepository implements RepositorioInterface
             'habitaciones',
             'canon',
             'portada',
-            'descripcion',
+            // 'descripcion',
             'id'
         ]);
     }
@@ -61,19 +61,26 @@ class InmuebleRepository implements RepositorioInterface
     public function find($id)
     {
         return $this->model->with('propietario')->find($id, [
-            'direccion',
-            'propietario_id',
             'ciudad',
+            'id',
+            'codigo',
+            'propietario_id',
             'departamento',
-            'tipo',
+            'direccion',
             'proposito',
-            'habitaciones',
             'canon',
             'portada',
-            'id',
+            'habitaciones',
+            'barrio',
+            'amoblado',
+            'precio',
+            'administracion',
+            'comision',
             'descripcion',
-            'codigo',
-            'precio'
+            'tipo',
+            'baños',
+            'parqueadero',
+            'estado',
         ]);
     }
 

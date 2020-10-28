@@ -33,9 +33,15 @@
                         <datalist class="col-md-6" style="width: 100%;" id="inmueble_id"></datalist>
                     </div>
 
-                    <div class="form-group col-md-12 ">
+                    <div class="form-group col-md-6 ">
                         <label class=" text-dark">Canon</label>
-                        <input type="number" disabled id="canon" class="form-control form-control-sm"
+                        <input type="text" disabled id="canon"  class="form-control form-control-sm"
+                            placeholder="canon ">
+                    </div>
+
+                    <div class="form-group col-md-6 ">
+                        <label class=" text-dark">Administracion</label>
+                        <input type="text" disabled id="administracion"  class="form-control form-control-sm"
                             placeholder="canon ">
                     </div>
 

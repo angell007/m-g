@@ -41,9 +41,9 @@
                     Seleccione Fecha de corte
                     <div class="col-md-12 form-inline">
                         <input type="text" class="form-control form-control-sm" id="min" name="min" placeholder="De:"
-                            onfocus="(this.type='date')">
+                            onfocus="(this.type='date')" required>
                         <input type="text" class="form-control form-control-sm" id="max" name="max" placeholder="Hasta:"
-                            onfocus="(this.type='date')">
+                            onfocus="(this.type='date')" required>
                     </div>
                 </div>
 
@@ -62,6 +62,15 @@
             action="{{route('realizados.store')}}">
             @csrf
         </form>
+
+        <form class="form-row text-left col-md-12" id="formPrint" method="Post" action="{{route('print.realizado')}}">
+            @csrf
+            <input type="hidden" name="id" id="idToPrint">
+            <input type="submit" class="btn btn-outline-info btn-sm" id="btnPrint" style="display: none"
+                value="Imprimir Recibo">
+        </form>
+
+        <div class="row card my-2" id="drawTickest"></div>
 
     </div>
 </div>

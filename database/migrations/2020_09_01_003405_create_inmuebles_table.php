@@ -28,10 +28,13 @@ class CreateInmueblesTable extends Migration
             $table->string('barrio')->nullable();
             $table->enum('amoblado', ['si', 'no'])->nullable();          
             $table->decimal('precio', 20, 2)->nullable();
+            $table->decimal('administracion', 20, 2)->nullable();
+            $table->decimal('comision', 20, 2)->nullable();
             $table->text('descripcion')->nullable();
             $table->enum('tipo', ['local', 'apartamento', 'casa', 'bodega']);
             $table->string('baños')->nullable();
             $table->string('parqueadero')->nullable();
+            $table->string('estado')->nullable();
 
             $table->timestamps();
         });

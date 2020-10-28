@@ -26,19 +26,19 @@ class GaleryController extends Controller
     {
         switch ($nombre) {
             case 'casas':
-                $inmuebles =   $inmuebles = Inmueble::where('tipo',  'casa')->paginate(11);
+                $inmuebles =   $inmuebles = Inmueble::where('tipo',  'casa')->where('estado', 'activo')->paginate(11);
                 break;
             case 'locales':
-                $inmuebles =   $inmuebles = Inmueble::where('tipo', 'local')->paginate(11);
+                $inmuebles =   $inmuebles = Inmueble::where('tipo', 'local')->where('estado', 'activo')->paginate(11);
                 break;
             case 'bodegas':
-                $inmuebles =   $inmuebles = Inmueble::where('tipo', 'bodega')->paginate(11);
+                $inmuebles =   $inmuebles = Inmueble::where('tipo', 'bodega')->where('estado', 'activo')->paginate(11);
                 break;
             case 'apartamentos':
-                $inmuebles =   $inmuebles = Inmueble::where('tipo', 'apartamento')->paginate(11);
+                $inmuebles =   $inmuebles = Inmueble::where('tipo', 'apartamento')->where('estado', 'activo')->paginate(11);
                 break;
             default:
-                $inmuebles = Inmueble::all();
+                $inmuebles = Inmueble::where('estado', 'activo')->get();
                 break;
         }
 
@@ -134,7 +134,7 @@ class GaleryController extends Controller
         //     return $q->where('tipo', 'like', '%' . request()->get('tipo') . '%');
         // });
 
-        $resul = $query->paginate();
+        $resul =  $query->where('estado', 'activo')->paginate();
         return $resul;
 
         // $inmuebles = Inmueble::where('proposito', 'like', '%' . request()->get('proposito') . '%')
@@ -198,7 +198,7 @@ class GaleryController extends Controller
                     return $q->where('habitaciones', '<=', $inmueble->habitaciones);
                 });
 
-                $relacionados = $query->get();
+                $relacionados = $query->where('estado', 'activo')->get();
 
                 return response()->json([compact('inmueble', 'relacionados'), 200], 200);
             } catch (\Throwable $th) {

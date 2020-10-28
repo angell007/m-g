@@ -49,6 +49,7 @@
                   </span>
                 </div>
 
+
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card text-left">
@@ -63,6 +64,22 @@
                         </tr>
                         <tr>
                           <td class="col-sm-3 " scope="row">
+                            Administracion
+                          </td>
+                          <td class="col-sm-3" scope="row">
+                            {{ $inmueble['administracion'] }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="col-sm-3 " scope="row">
+                            Comisión
+                          </td>
+                          <td class="col-sm-3" scope="row">
+                            {{ $inmueble['comision'] }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="col-sm-3 " scope="row">
                             Proposito
                           </td>
                           <td class="col-sm-3" scope="row">
@@ -71,10 +88,34 @@
                         </tr>
                         <tr>
                           <td class="col-sm-3 " scope="row">
+                            Amoblado
+                          </td>
+                          <td class="col-sm-3" scope="row">
+                            {{ $inmueble['amoblado'] }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="col-sm-3 " scope="row">
+                            Parqueadero
+                          </td>
+                          <td class="col-sm-3" scope="row">
+                            {{ $inmueble['parqueadero'] }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="col-sm-3 " scope="row">
                             Habitaciones
                           </td>
                           <td class="col-sm-3" scope="row">
                             {{ $inmueble['habitaciones'] }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="col-sm-3 " scope="row">
+                            Baños
+                          </td>
+                          <td class="col-sm-3" scope="row">
+                            {{ $inmueble['baños'] }}
                           </td>
                         </tr>
                         <tr>
@@ -87,10 +128,27 @@
                         </tr>
                         <tr>
                           <td class="col-sm-6" scope="row">
+                            Departamento
+                          </td>
+                          <td class="col-sm-6" scope="row">
+                            {{ $inmueble['departamento'] }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="col-sm-6" scope="row">
                             Direción
                           </td>
                           <td class="col-sm-6" scope="row">
                             {{ $inmueble['direccion'] }}
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="col-sm-6" scope="row">
+                            Barrio
+                          </td>
+                          <td class="col-sm-6" scope="row">
+                            {{ $inmueble['barrio'] }}
                           </td>
                         </tr>
 

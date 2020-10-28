@@ -24,7 +24,9 @@ class PropietarioStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => 'required|email',
+            'identificacion' => 'required|unique:propietarios,identificacion',
+            'tipo_identificacion' => 'required',
         ];
     }
 }

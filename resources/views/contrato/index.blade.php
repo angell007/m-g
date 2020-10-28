@@ -12,13 +12,13 @@
                     </h6>
 
                     <a type="button" href="javascript:history.back()"
-                        class=" text-white tooltip-wrapper btn  btn-success rounded-circle" title=""
+                        class=" text-white tooltip-wrapper btn btn-sm btn-success rounded-circle" title=""
                         data-original-title="Regresar">
                         <i class=" fa fa-reply " aria-hidden="true"></i>
                     </a>
 
                     <a type="button" href="javascript:void(0)"
-                        class=" text-white tooltip-wrapper btn  btn-primary rounded-circle" data-toggle="modal"
+                        class=" text-white tooltip-wrapper btn btn-sm btn-primary rounded-circle" data-toggle="modal"
                         data-placement="top" data-target="#modalContratoRegister" title="Nuevo Contrato">
                         <i class="fa fa-fw fa-plus"></i>
                     </a>
@@ -39,6 +39,16 @@
                             <th>Observaciones</th>
                             <th></th>
                         </tr>
+                        {{-- <tr>
+
+                            <th><input class="form-control form-control-sm" type="text" id="SearchInmueble" name="inmueble"></th>
+                            <th><input class="form-control form-control-sm" type="text" id="SearchArrendatario" name="arrendatario"></th>
+                            <th><input class="form-control form-control-sm" type="text" id="SearchCodigo" name="codigo"></th>
+                            <th><input class="form-control form-control-sm" type="text" id="SearchInicio" name="inicio"></th>
+                            <th><input class="form-control form-control-sm" type="text" id="SearchFinal" name="final"></th>
+                            <th><input class="form-control form-control-sm" type="text" id="SearchProrrogado" name="prorrogado"></th>
+
+                        </tr> --}}
                     </thead>
                     <tbody id="bodyTableContratos">
                     </tbody>
@@ -61,4 +71,5 @@
 <script src="{{ asset('/apis/getArrendatarios.js') }}"></script>
 <script src="{{ asset('/apis/getInmuebles.js') }}"></script>
 <script src="{{ asset('/apis/customContrato.js') }}"></script>
+<script src="{{ asset('/apis/contratoFilter.js') }}"></script>
 @endpush

@@ -13,8 +13,8 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    
-                    {{ __('You are logged in!') }}
+
+                    Bienvenido a Inmobiliaria M&G
 
                 </div>
             </div>

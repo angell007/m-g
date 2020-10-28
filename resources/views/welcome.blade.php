@@ -8,7 +8,7 @@
 
     <title>Inmobiliaria M&G </title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/inmobiliariamyg.png')}}">
 
     <!-- jQuery -->
     <script src="{{asset('js/jquery.min.js')}}" type="text/javascript"></script>
@@ -141,6 +141,7 @@ media="all"> --}}
                                 </div>
                                 </ul>
 
+                                @guest
                                 <section class="card p-2 mx-3">
                                     <a href="#" class="icontext" data-toggle="dropdown" id="nav">
                                         <div class="icon-wrap icon-xs bg2 round text-secondary"><i
@@ -228,7 +229,17 @@ media="all"> --}}
                                         </div>
                                     </div>
                                 </section>
+                                @endguest
 
+                                @auth
+                                <a href="{{url('/home')}}" class="icontext" id="nav">
+                                    <div class="icon-wrap icon-xs bg2 round text-secondary"><i class="fa fa-gears"></i>
+                                    </div>
+                                    <div class="text-wrap">
+                                        <span class="text-dark">Administración</i></span>
+                                    </div>
+                                </a>
+                                @endauth
                             </nav>
                         </div>
 

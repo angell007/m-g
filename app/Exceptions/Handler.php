@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Config;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -48,8 +50,26 @@ class Handler extends ExceptionHandler
      *
      * @throws \Throwable
      */
-    public function render($request, Throwable $exception)
+
+    public function render($request, Throwable $e)
     {
-        return parent::render($request, $exception);
+        $error = $this->convertExceptionToResponse($e);
+        if ($error->getStatusCode() == 419) {
+            redirect('/', 302);
+        }
+        return parent::render($request, $e);
     }
+
+
+    // $response = [];
+    //    $response['error'] = $e->getMessage();
+    //    if(Config::get('app.debug')) {
+    //        $response['trace'] = $e->getTraceAsString();
+    //        $response['code'] = $e->getCode();
+    //    }
+
+    //    return response()->json($response, $error->getStatusCode());
+    // public function render($request, Throwable $exception)
+    // {
+
 }

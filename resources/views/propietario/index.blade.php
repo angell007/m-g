@@ -12,13 +12,13 @@
                     </h6>
 
                     <a type="button" href="javascript:history.back()"
-                        class=" text-white tooltip-wrapper btn  btn-success rounded-circle" title=""
+                        class=" text-white tooltip-wrapper btn  btn-sm btn-success rounded-circle" title=""
                         data-original-title="Regresar">
                         <i class=" fa fa-reply " aria-hidden="true"></i>
                     </a>
 
                     <a type="button" href="javascript:void(0)"
-                        class=" text-white tooltip-wrapper btn  btn-primary rounded-circle" data-toggle="modal"
+                        class=" text-white tooltip-wrapper btn  btn-sm btn-primary rounded-circle" data-toggle="modal"
                         data-placement="top" data-target="#modalPropietarioRegister" title="Nuevo Propietario">
                         <i class="fa fa-fw fa-plus"></i>
                     </a>
@@ -37,6 +37,15 @@
                             <th>Direccion</th>
                             <th>Telefono</th>
                             <th></th>
+                            <tr>
+                                <td><input class="form-control form-control-sm" type="text" id="Searchnombre" name="nombre"></td>
+                                <td><input class="form-control form-control-sm" type="text" id="Searchapellido" name="apellido"></td>
+                                <td><input class="form-control form-control-sm" type="text" id="Searchemail" name="email"></td>
+                                <td><input class="form-control form-control-sm" type="text" id="Searchdocuemento" name="docuemento"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         </tr>
                     </thead>
                     <tbody id="bodyTablePropietarios">
@@ -58,4 +67,5 @@
 @push('scripts')
 <script src="{{ asset('/apis/general.js') }}"></script>
 <script src="{{ asset('/apis/propietario.js') }}"></script>
+<script src="{{ asset('/apis/propietarioFilter.js') }}"></script>
 @endpush

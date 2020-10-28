@@ -25,6 +25,8 @@ class ArrendatarioStoreRequest extends FormRequest
     {
         return [
              'email' => 'required|email',
+             'identificacion' => 'required|unique:arrendatarios,identificacion',
+             'tipo_identificacion' => 'required',
         ];
     }
 }

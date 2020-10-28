@@ -18,6 +18,8 @@ class PagoRecibido extends Model
         'valor',
         'estado',
         'observaciones',
+        'desde',
+        'hasta'
     ];
     public function contrato()
     {

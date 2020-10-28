@@ -32,9 +32,9 @@ a:focus {
 }
 
 @media (max-width: 768px) {
-    #wrapper #content-wrapper {
-        z-index: 2 !important;
-    }
+    /* #wrapper #content-wrapper { */
+        /* z-index: 2 !important; */
+    /* } */
 }
 
 #wrapper #content-wrapper #content {
@@ -1322,7 +1322,7 @@ a:focus {
     height: 10rem;
     width: 100%;
 }
-
+/* 
 @media (min-width: 768px) {
     .chart-area {
         height: 20rem;
@@ -1351,7 +1351,7 @@ a:focus {
     .chart-pie {
         height: calc(20rem - 43px) !important;
     }
-}
+} */
 
 .bg-login-image {
     background-position: center;

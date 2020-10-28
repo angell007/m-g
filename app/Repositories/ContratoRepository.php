@@ -56,7 +56,7 @@ class ContratoRepository implements RepositorioInterface
         return $this->model->with([
             'propietario:id,identificacion,nombre,apellido,full_name',
             'arrendatario:id,identificacion,nombre,apellido,full_name',
-            'inmueble:id,codigo'
+            'inmueble:id,codigo,canon,administracion'
         ])->find($id, ['*']);
     }
 

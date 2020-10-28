@@ -22,7 +22,9 @@ class PagoRealizado extends Model
         'concepto',
         'valor',
         'estado',
-        'observaciones'
+        'observaciones',
+        'desde',
+        'hasta'
     ];
 
     public function contrato()

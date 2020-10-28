@@ -22,7 +22,7 @@
                                 <select class="form-control form-control-sm" required="required"
                                     name="tipo_identificacion">
                                     <option disabled selected> Selecciona...</option>
-                                    <option value="Cedula">Cedula</option>
+                                    <option value="CC">Cedula</option>
                                     <option value="Pasaporte">Pasaporte</option>
                                     <option value="Nit">Nit</option>
                                 </select>

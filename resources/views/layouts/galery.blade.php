@@ -8,7 +8,7 @@
 
     <title>Inmobiliaria M&G</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link href="{{asset('images/inmobiliariamyg.png')}}" rel="icon">
 
     <!-- jQuery -->
     <script src="{{asset('js/jquery.min.js')}}" type="text/javascript"></script>
@@ -45,7 +45,7 @@
     <script>
         let SITEURL = 'api'
         let ASSETURL = '../file'
-        let SITEURLWEB = 'https://inmobiliaria.test'
+        let SITEURLWEB = 'https://myg.operacionsistemica.com'
     </script>
 
     <style>

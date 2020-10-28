@@ -6,6 +6,7 @@ use App\Http\Requests\ImagenStoreRequest;
 use App\Http\Requests\ImagenUpdateRequest;
 use App\Imagen;
 use App\Repositories\ImagenRepository;
+use Illuminate\Support\Facades\File;
 
 class ImagenController extends Controller
 {
@@ -25,7 +26,7 @@ class ImagenController extends Controller
     public function index()
     {
         if (request()->wantsJson()) {
-			
+
             return response()->json($this->repository->getAll(request()->get('id')));
         }
         return view('imagen.index');
@@ -35,14 +36,13 @@ class ImagenController extends Controller
     {
         if (request()->wantsJson()) {
             try {
-				
+
                 // $Imagen = $this->repository->find($id);
                 // if (null == $Imagen) {
-                    // return response()->json(['error' =>  'Imagen no found', 'code' => 404], 404);
+                // return response()->json(['error' =>  'Imagen no found', 'code' => 404], 404);
                 // }
                 // return response()->json(['data' =>  $Imagen, 'code' => 200], 200);
-				return response()->json($this->repository->getAll($id));
-				
+                return response()->json($this->repository->getAll($id));
             } catch (\Throwable $th) {
                 return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
             }
@@ -87,6 +87,9 @@ class ImagenController extends Controller
     public function destroy($id)
     {
         try {
+            $imagen = Imagen::find($id);
+            File::delete(public_path('/file/' . $imagen->path));
+
             if (($this->repository->delete($id))) {
                 return response()->json(['data' =>  'Eliminado Correcto', 'code' => 200], 200);
             }

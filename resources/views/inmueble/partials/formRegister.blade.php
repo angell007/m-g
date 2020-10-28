@@ -22,9 +22,24 @@
                             </div>
 
                             <div class="form-group col-md-6">
+                                <label class="text-dark">Estado</label>
+                                <select class="form-control form-control-sm" required="required" name="estado">
+                                    <option disabled selected> Selecciona...</option>
+                                    <option value="apartamento">Activo</option>
+                                    <option value="bodega">Inactivo</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
                                 <label class="text-dark">Dirección</label>
                                 <input type="text" class="form-control form-control-sm" required="required"
                                     name="direccion" tag="Direccion">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="text-dark">Barrio</label>
+                                <input type="text" class="form-control form-control-sm" required="required"
+                                    name="barrio" tag="Barrio">
                             </div>
 
                             <div class="form-group col-md-6">
@@ -43,11 +58,12 @@
                                 <label class="text-dark">Tipo</label>
                                 <select class="form-control form-control-sm" required="required" name="tipo">
                                     <option disabled selected> Selecciona...</option>
-                                    <option value="Apartamento">Apartamento</option>
-                                    <option value="Bodega">Bodega</option>
-                                    <option value="Casa">Casa</option>
+                                    <option value="apartamento">Apartamento</option>
+                                    <option value="bodega">Bodega</option>
+                                    <option value="casa">Casa</option>
                                 </select>
                             </div>
+
 
                             <div class="form-group col-md-6">
                                 <label class="text-dark">Proposito</label>
@@ -65,9 +81,45 @@
                             </div>
 
                             <div class="form-group col-md-6">
+                                <label class="text-dark">Baños</label>
+                                <input type="number" class="form-control form-control-sm" required="required"
+                                    name="baños">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="text-dark">Parqueadero</label>
+                                <select class="form-control form-control-sm" required="required" name="parqueadero">
+                                    <option disabled selected> Selecciona...</option>
+                                    <option value="si">Si</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="text-dark">Amoblado</label>
+                                <select class="form-control form-control-sm" required="required" name="amoblado">
+                                    <option disabled selected> Selecciona...</option>
+                                    <option value="si">Si</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
                                 <label class="text-dark">Canon</label>
                                 <input type="currency" class="form-control form-control-sm" required="required"
                                     name="canon">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="text-dark">Administracion</label>
+                                <input type="currency" class="form-control form-control-sm" required="required"
+                                    name="administracion">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="text-dark">Porcentaje de Comisión</label>
+                                <input type="currency" class="form-control form-control-sm" required="required"
+                                    name="comision">
                             </div>
 
                             <div class="form-group col-md-6">
@@ -76,15 +128,14 @@
                                     name="precio">
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <input type="file" id="file" name="portada"  />
+                            <div class="form-group col-md-12 text-center">
+                                <input type="file" id="file" name="portada" />
                                 <label for="file" class="btn-1">Selecciona portada</label>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label class="text-dark">Descripcion</label>
-                                <textarea class="form-control form-control-sm" name="descripcion" id=""
-                                    rows="3"></textarea>
+                                <textarea class="form-control form-control-sm" name="descripcion" rows="3"></textarea>
                             </div>
 
                             <div class="form-group col-md-12">

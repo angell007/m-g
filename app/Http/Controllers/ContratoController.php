@@ -63,7 +63,7 @@ class ContratoController extends Controller
     {
         try {
             $contrato = $this->repository->Create($contratoRequest->all());
-            return response()->json(['data' => $contrato, 'code' => 200], 200);
+            return response()->json(['data' => $contrato, 'message' => 'Registro Exitoso', 'code' => 200], 200);
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
         }
@@ -115,6 +115,35 @@ class ContratoController extends Controller
                 'descuentos',
                 'inmueble'
             ])->find(request()->get('codigo'));
+            return response()->json(['data' =>  $contrato, 'code' => 200], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);
+        }
+    }
+
+    public function filterSearch()
+    {
+        try {
+
+            if (request()->get('id') == null && request()->get('id') == '') {
+                return redirect()->action(
+                    [ContratoController::class, 'index']
+                );
+            }
+
+            $contrato = Contrato::where('codigo', request()->get('id'))->first();
+
+            if ($contrato == null && $contrato == '') {
+                return redirect()->action(
+                    [ContratoController::class, 'index']
+                );
+            }
+
+            return redirect()->action(
+                [ContratoController::class, 'show'],
+                ['id' =>  $contrato->id]
+            );
+
             return response()->json(['data' =>  $contrato, 'code' => 200], 200);
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage(), 'code' => 500], 500);

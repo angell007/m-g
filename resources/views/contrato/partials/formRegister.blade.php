@@ -23,15 +23,21 @@
 
                             <div class="form-group col-md-6 ">
                                 <label class=" text-dark">Inmuebles</label>
-                                <input class="form-control form-control-sm" list="inmueble_id" id="customID"
-                                    autocomplete="off" name="inmueble_id" formControlName="inmueble_id">
+                                <input class="form-control form-control-sm" list="inmueble_id" onchange="settCanon()"
+                                    id="customID" autocomplete="off" name="inmueble_id" formControlName="inmueble_id">
                                 <datalist class="col-md-6" style="width: 100%;" id="inmueble_id"></datalist>
                             </div>
 
-                            <div class="form-group col-md-12 ">
+                            <div class="form-group col-md-6 ">
                                 <label class=" text-dark">Canon</label>
-                                <input type="number" disabled id="canon" class="form-control form-control-sm"
+                                <input type="text" readonly class="form-control form-control-sm canon"
                                     placeholder="canon ">
+                            </div>
+
+                            <div class="form-group col-md-6 ">
+                                <label class=" text-dark">Administración</label>
+                                <input type="text" readonly class="form-control form-control-sm administracion"
+                                    placeholder="administracion ">
                             </div>
 
                             <div class="form-group col-md-6">

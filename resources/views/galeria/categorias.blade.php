@@ -4,9 +4,19 @@
 <section class="section-request my-5 bg-white">
     <div class="container">
         <section class=" p-3">
-            <header class="section-heading heading-line">
-                <h4 class="title-section text-uppercase font-weight-bold">Nuestros Inmuebles</h4>
-            </header>
+            <h4 class="title-section text-uppercase font-weight-bold">
+                
+                <a type="button" href="javascript:history.back()"
+                    class=" text-white tooltip-wrapper btn  btn-sm btn-success rounded-circle" title=""
+                    data-original-title="Regresar">
+                    <i class=" fa fa-reply " aria-hidden="true"></i>
+                </a>
+                Nuestros Inmuebles
+
+            </h4>
+
+            <header class="section-heading heading-line"></header>
+
 
             <form class="row d-flex justify-content-center  py-3" id="formFilter" action="{{route('filter')}}"
                 method="Post">
