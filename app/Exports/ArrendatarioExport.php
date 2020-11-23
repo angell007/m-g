@@ -26,7 +26,6 @@ class ArrendatarioExport implements FromView, WithEvents, ShouldAutoSize
     public function view(): View
     {
         try {
-
             $inicio = Carbon::createFromDate(request()->get('min'))->addDays(1)->format('Y-m-d');
             $fin = Carbon::createFromDate(request()->get('max'))->addDays(1)->format('Y-m-d');
 

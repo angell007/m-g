@@ -1,0 +1,2 @@
+const infoDetail=[],getInmuebles=async()=>{try{let a=document.getElementById("inmueble_id");a.innerHTML="";const b=await axios.get(`${SITEURL}/inmuebles`);allInmuebles=Object.values((await b).data),infoDetail.inmuebles=allInmuebles,allInmuebles.forEach(b=>{let c=`
+            <option value="${b.codigo}"></option>`;a.innerHTML+=c})}catch(a){console.error(a)}};getInmuebles();
